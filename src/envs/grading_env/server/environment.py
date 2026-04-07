@@ -2,15 +2,8 @@ import json
 import uuid
 from pathlib import Path
 from typing import Tuple
-import sys
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent.parent))
-
-from src.envs.grading_env.models import (
-    GradingAction,
-    GradingObservation,
-    GradingState
-)
+from ..models import GradingAction, GradingObservation, GradingState
 
 
 class GradingEnvironment:
@@ -36,9 +29,8 @@ class GradingEnvironment:
         current_q = self.questions[self.current_index]
 
         manual_mark = current_q["manual_mark"]
-        agent_mark = action.marks_awarded  # ✅ Use agent's provided marks
+        agent_mark = action.marks_awarded
 
-        # ✅ Reward based on comparison with manual marks
         reward = self._compute_reward(agent_mark, manual_mark)
 
         self.cumulative_marks += agent_mark
@@ -63,7 +55,6 @@ class GradingEnvironment:
 
     def _compute_reward(self, agent_mark: float, manual_mark: float) -> float:
         diff = abs(agent_mark - manual_mark)
-
         if diff == 0.0:
             base_reward = 1.0
         elif diff <= 0.1:
@@ -79,7 +70,6 @@ class GradingEnvironment:
 
         if agent_mark == 1.0 and manual_mark < 0.5:
             base_reward = max(0.0, base_reward - 0.3)
-
         if agent_mark == 0.0 and manual_mark > 0.5:
             base_reward = max(0.0, base_reward - 0.3)
 
@@ -89,7 +79,6 @@ class GradingEnvironment:
         idx = min(self.current_index, len(self.questions) - 1)
         q = self.questions[idx]
 
-        # ✅ Compute keyword match quality
         keyword_match = self._check_keyword_match(
             q["student_answer"],
             q["answer_key"]
@@ -109,27 +98,19 @@ class GradingEnvironment:
             done=done
         )
 
-
     def _check_keyword_match(self, student_answer: str, answer_key: str) -> float:
-        """Extract key terms from answer_key and check if they appear in student_answer."""
         student_lower = student_answer.lower()
-        
-        # Split answer_key by common delimiters to find key phrases
         key_phrases = [p.strip() for p in answer_key.split('.') if p.strip()]
-        
         if not key_phrases:
             return 0.0
-        
+
         matches = 0
         for phrase in key_phrases:
-            # Extract key terms (skip very short words)
             terms = [t.strip() for t in phrase.split() if len(t.strip()) > 2]
             for term in terms:
                 if term.lower() in student_lower:
                     matches += 1
-                    break  # Count phrase as matched once
-        
-        # Return match percentage (normalized to 0.0-1.0)
+                    break
         return min(1.0, matches / len(key_phrases)) if key_phrases else 0.0
 
     def _load_task(self, task_id: int):
@@ -138,8 +119,6 @@ class GradingEnvironment:
             2: "task2_medium.json",
             3: "task3_hard.json"
         }
-
         path = self.DATA_PATH / file_map[task_id]
-
         with open(path, "r") as f:
             self.questions = json.load(f)

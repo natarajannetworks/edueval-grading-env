@@ -1,0 +1,25 @@
+Folder PATH listing for volume Windows
+Volume serial number is 10C5-2C10
+C:.
+¦   client.py
+¦   models.py
+¦   structure.txt
+¦   __init__.py
+¦   
++---server
+¦   ¦   app.py
+¦   ¦   Dockerfile
+¦   ¦   environment.py
+¦   ¦   requirements.txt
+¦   ¦   __init__.py
+¦   ¦   
+¦   +---__pycache__
+¦           app.cpython-311.pyc
+¦           environment.cpython-311.pyc
+¦           __init__.cpython-311.pyc
+¦           
++---__pycache__
+        client.cpython-311.pyc
+        models.cpython-311.pyc
+        __init__.cpython-311.pyc
+        
