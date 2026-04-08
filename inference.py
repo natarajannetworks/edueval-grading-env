@@ -2,77 +2,57 @@ import os
 import requests
 from openai import OpenAI
 
-API_BASE_URL = os.environ.get("API_BASE_URL", "https://natarajan-networks-grading-env.hf.space")
-MODEL_NAME = os.environ.get("MODEL_NAME", "gpt-4o-mini")
-HF_TOKEN = os.environ.get("HF_TOKEN", "")
+API_BASE_URL = os.getenv("API_BASE_URL", "https://natarajan-networks-grading-env.hf.space")
+MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
+HF_TOKEN = os.getenv("HF_TOKEN", "")
 
-client = OpenAI(
-    api_key=HF_TOKEN if HF_TOKEN else "dummy",
-    base_url="https://api.openai.com/v1"
-)
-
-def grade_with_llm(question_text, student_answer, answer_key, semantic_similarity, concept_coverage):
-    try:
-        prompt = f"""You are an expert answer grader. Grade the student's answer between 0.0 and 1.0.
-
-Question: {question_text}
-Answer Key: {answer_key}
-Student Answer: {student_answer}
-Semantic Similarity Score: {semantic_similarity}
-Concept Coverage Score: {concept_coverage}
-
-Return only a single float number between 0.0 and 1.0. Nothing else."""
-
-        response = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=10
-        )
-        mark = float(response.choices[0].message.content.strip())
-        return max(0.0, min(1.0, mark))
-    except Exception:
-        return round(max(0.0, min(1.0, (semantic_similarity + concept_coverage) / 2)), 2)
+def grade(semantic_similarity, concept_coverage):
+    return round(max(0.0, min(1.0, (semantic_similarity + concept_coverage) / 2)), 2)
 
 def run_task(task_id):
     base = API_BASE_URL.rstrip("/")
 
-    # Reset returns observation directly
-    reset_resp = requests.post(f"{base}/reset", params={"task_id": task_id})
+    reset_resp = requests.post(f"{base}/reset", params={"task_id": task_id}, timeout=30)
     obs = reset_resp.json()
 
     total_reward = 0.0
     step_num = 0
     done = obs.get("done", False)
+    rewards = []
+    success = False
 
-    print(f"[START] task_id={task_id}")
+    print(f"[START] task=grading-task-{task_id} env=edueval model={MODEL_NAME}", flush=True)
 
-    while not done:
-        step_num += 1
+    try:
+        while not done:
+            step_num += 1
 
-        question_text = obs.get("question_text", "")
-        student_answer = obs.get("student_answer", "")
-        answer_key = obs.get("answer_key", "")
-        semantic_similarity = obs.get("semantic_similarity", 0.0)
-        concept_coverage = obs.get("concept_coverage", 0.0)
+            semantic_similarity = obs.get("semantic_similarity", 0.0)
+            concept_coverage = obs.get("concept_coverage", 0.0)
+            marks = grade(semantic_similarity, concept_coverage)
 
-        marks = grade_with_llm(question_text, student_answer, answer_key, semantic_similarity, concept_coverage)
+            step_resp = requests.post(
+                f"{base}/step",
+                params={"task_id": task_id},
+                json={"marks_awarded": marks},
+                timeout=30
+            )
+            result = step_resp.json()
+            reward = result.get("reward", 0.0)
+            done = result.get("done", False)
+            obs = result.get("observation", {})
+            total_reward += reward
+            rewards.append(reward)
 
-        step_resp = requests.post(
-            f"{base}/step",
-            params={"task_id": task_id},
-            json={"marks_awarded": marks}
-        )
-        result = step_resp.json()
-        reward = result.get("reward", 0.0)
-        done = result.get("done", False)
+            print(f"[STEP] step={step_num} action={marks} reward={reward:.2f} done={str(done).lower()} error=null", flush=True)
 
-        # Step returns observation nested inside "observation" key
-        obs = result.get("observation", {})
-        total_reward += reward
+        score = min(max(total_reward / max(len(rewards), 1), 0.0), 1.0)
+        success = score >= 0.5
 
-        print(f"[STEP] task_id={task_id} step={step_num} marks_awarded={marks} reward={reward} done={done}")
+    finally:
+        rewards_str = ",".join(f"{r:.2f}" for r in rewards)
+        print(f"[END] success={str(success).lower()} steps={step_num} score={score:.2f} rewards={rewards_str}", flush=True)
 
-    print(f"[END] task_id={task_id} total_reward={round(total_reward, 2)} steps={step_num}")
     return total_reward
 
 if __name__ == "__main__":
