@@ -8,11 +8,12 @@ HF_TOKEN = os.environ.get("HF_TOKEN", "")
 
 client = OpenAI(
     api_key=HF_TOKEN if HF_TOKEN else "dummy",
-    base_url=API_BASE_URL if API_BASE_URL and "hf.space" not in API_BASE_URL else "https://api.openai.com/v1"
+    base_url="https://api.openai.com/v1"
 )
 
 def grade_with_llm(question_text, student_answer, answer_key, semantic_similarity, concept_coverage):
-    prompt = f"""You are an expert answer grader. Grade the student's answer between 0.0 and 1.0.
+    try:
+        prompt = f"""You are an expert answer grader. Grade the student's answer between 0.0 and 1.0.
 
 Question: {question_text}
 Answer Key: {answer_key}
@@ -22,7 +23,6 @@ Concept Coverage Score: {concept_coverage}
 
 Return only a single float number between 0.0 and 1.0. Nothing else."""
 
-    try:
         response = client.chat.completions.create(
             model=MODEL_NAME,
             messages=[{"role": "user", "content": prompt}],
@@ -36,24 +36,26 @@ Return only a single float number between 0.0 and 1.0. Nothing else."""
 def run_task(task_id):
     base = API_BASE_URL.rstrip("/")
 
+    # Reset returns observation directly
     reset_resp = requests.post(f"{base}/reset", params={"task_id": task_id})
     obs = reset_resp.json()
 
     total_reward = 0.0
     step_num = 0
-    done = False
+    done = obs.get("done", False)
 
     print(f"[START] task_id={task_id}")
 
     while not done:
         step_num += 1
-        marks = grade_with_llm(
-            obs["question_text"],
-            obs["student_answer"],
-            obs["answer_key"],
-            obs["semantic_similarity"],
-            obs["concept_coverage"]
-        )
+
+        question_text = obs.get("question_text", "")
+        student_answer = obs.get("student_answer", "")
+        answer_key = obs.get("answer_key", "")
+        semantic_similarity = obs.get("semantic_similarity", 0.0)
+        concept_coverage = obs.get("concept_coverage", 0.0)
+
+        marks = grade_with_llm(question_text, student_answer, answer_key, semantic_similarity, concept_coverage)
 
         step_resp = requests.post(
             f"{base}/step",
@@ -61,9 +63,11 @@ def run_task(task_id):
             json={"marks_awarded": marks}
         )
         result = step_resp.json()
-        reward = result["reward"]
-        done = result["done"]
-        obs = result["observation"]
+        reward = result.get("reward", 0.0)
+        done = result.get("done", False)
+
+        # Step returns observation nested inside "observation" key
+        obs = result.get("observation", {})
         total_reward += reward
 
         print(f"[STEP] task_id={task_id} step={step_num} marks_awarded={marks} reward={reward} done={done}")
