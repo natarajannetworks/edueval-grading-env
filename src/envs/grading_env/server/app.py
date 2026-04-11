@@ -140,7 +140,7 @@ def reset(task_id: int = 1):
     return environments[task_id].reset()
 
 @app.post("/step")
-def step(action: GradingAction, task_id: int = 1):
+def step(request: dict, task_id: int = 1):
     if task_id not in environments:
         raise HTTPException(400, "Invalid task_id")
 
@@ -148,6 +148,12 @@ def step(action: GradingAction, task_id: int = 1):
 
     if env.state().is_complete:
         raise HTTPException(400, "Episode complete")
+
+    # ✅ Extract answer from frontend
+    answer = request.get("answer", "")
+
+    # ✅ Create action object correctly
+    action = GradingAction(answer=answer)
 
     obs, reward, done = env.step(action)
 
