@@ -18,7 +18,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-# Initialize environments
 environments = {
     1: GradingEnvironment(task_id=1),
     2: GradingEnvironment(task_id=2),
@@ -33,29 +32,58 @@ def root():
             <title>EduEval Grading Environment</title>
             <script src="https://cdn.tailwindcss.com"></script>
         </head>
-        <body class="bg-gray-50 flex items-center justify-center min-h-screen">
-            <div class="max-w-3xl w-full p-8 text-center text-gray-800">
-                <h1 class="text-5xl font-extrabold mb-4 text-indigo-600">EduEval</h1>
-                <p class="text-lg text-gray-600 mb-10">
-                    OpenEnv environment for intelligent answer sheet grading and evaluation
-                </p>
-                <div class="bg-white rounded-2xl p-8 text-left shadow-md border border-gray-200">
-                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Tasks</h2>
-                    <ul class="space-y-5">
-                        <li><span class="font-semibold text-indigo-500">Easy Level</span><br/>Basic answer grading using simple evaluation rules.</li>
-                        <li><span class="font-semibold text-indigo-500">Medium Level</span><br/>Multi-step answer validation and scoring logic.</li>
-                        <li><span class="font-semibold text-indigo-500">Hard Level</span><br/>Complex descriptive answer grading with detailed feedback.</li>
-                    </ul>
+        <body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen flex items-center justify-center p-6">
+            <div class="max-w-4xl w-full">
+                <div class="text-center mb-10">
+                    <h1 class="text-6xl font-extrabold text-indigo-700 mb-3">📚 EduEval</h1>
+                    <p class="text-xl text-gray-600">Automated Answer Sheet Grading Environment</p>
+                    <p class="text-sm text-indigo-400 mt-2">OpenEnv · Reinforcement Learning · Education AI</p>
                 </div>
-                <div class="flex justify-center gap-6 mt-10">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-2xl p-6 shadow-md border border-green-100">
+                        <div class="text-3xl mb-2">🟢</div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 1 — Easy</h3>
+                        <p class="text-gray-500 text-sm">Basic factual questions with simple one-line answers. Great for warming up agents.</p>
+                        <div class="mt-3 text-green-600 font-semibold text-sm">Baseline Score: 0.97</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-md border border-yellow-100">
+                        <div class="text-3xl mb-2">🟡</div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 2 — Medium</h3>
+                        <p class="text-gray-500 text-sm">Multi-concept answers requiring partial credit scoring and semantic understanding.</p>
+                        <div class="mt-3 text-yellow-600 font-semibold text-sm">Baseline Score: 0.88</div>
+                    </div>
+                    <div class="bg-white rounded-2xl p-6 shadow-md border border-red-100">
+                        <div class="text-3xl mb-2">🔴</div>
+                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 3 — Hard</h3>
+                        <p class="text-gray-500 text-sm">Complex descriptive answers requiring deep semantic evaluation and nuanced grading.</p>
+                        <div class="mt-3 text-red-500 font-semibold text-sm">Baseline Score: 0.77</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-md mb-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">🔗 API Endpoints</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono">
+                        <div class="bg-green-50 rounded-lg p-3"><span class="text-green-700 font-bold">POST</span> /reset?task_id=1</div>
+                        <div class="bg-blue-50 rounded-lg p-3"><span class="text-blue-700 font-bold">POST</span> /step?task_id=1</div>
+                        <div class="bg-purple-50 rounded-lg p-3"><span class="text-purple-700 font-bold">GET</span> /state?task_id=1</div>
+                        <div class="bg-gray-50 rounded-lg p-3"><span class="text-gray-700 font-bold">GET</span> /health</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4">
                     <a href="/docs"
-                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow">
+                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
                         📄 API Docs
                     </a>
                     <a href="https://github.com/natarajannetworks/edueval-grading-env"
                        target="_blank"
-                       class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow">
+                       class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
                         🔗 GitHub
+                    </a>
+                    <a href="/health"
+                       class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
+                        ✅ Health Check
                     </a>
                 </div>
             </div>
@@ -103,6 +131,8 @@ def health():
     return {
         "status": "ok",
         "env": "EduEval",
+        "version": "1.0.0",
+        "tasks": 3,
         "message": "Environment is running successfully"
     }
 
