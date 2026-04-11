@@ -1,5 +1,6 @@
 import json
 import uuid
+import random
 from pathlib import Path
 from typing import Tuple
 
@@ -12,17 +13,21 @@ class GradingEnvironment:
 
     def __init__(self, task_id: int = 1):
         self.task_id = task_id
+        self.all_questions = []
         self.questions = []
         self.current_index = 0
         self.episode_id = ""
         self.cumulative_marks = 0.0
-
+        self.consecutive_accurate = 0
         self._load_task(task_id)
 
     def reset(self) -> GradingObservation:
         self.current_index = 0
         self.cumulative_marks = 0.0
+        self.consecutive_accurate = 0
         self.episode_id = str(uuid.uuid4())
+        # Randomly select 3 questions each episode
+        self.questions = random.sample(self.all_questions, min(3, len(self.all_questions)))
         return self._make_observation()
 
     def step(self, action: GradingAction) -> Tuple[GradingObservation, float, bool]:
@@ -31,7 +36,7 @@ class GradingEnvironment:
         manual_mark = current_q["manual_mark"]
         agent_mark = action.marks_awarded
 
-        reward = self._compute_reward(agent_mark, manual_mark)
+        reward = self._compute_reward(agent_mark, manual_mark, current_q)
 
         self.cumulative_marks += agent_mark
         self.current_index += 1
@@ -53,27 +58,55 @@ class GradingEnvironment:
             is_complete=self.current_index >= len(self.questions)
         )
 
-    def _compute_reward(self, agent_mark: float, manual_mark: float) -> float:
+    def _compute_reward(self, agent_mark: float, manual_mark: float, question: dict) -> float:
         diff = abs(agent_mark - manual_mark)
+
+        # Base reward from accuracy
         if diff == 0.0:
             base_reward = 1.0
+        elif diff <= 0.05:
+            base_reward = 0.9
         elif diff <= 0.1:
             base_reward = 0.8
+        elif diff <= 0.15:
+            base_reward = 0.7
         elif diff <= 0.2:
             base_reward = 0.6
         elif diff <= 0.3:
             base_reward = 0.4
-        elif diff <= 0.5:
+        elif diff <= 0.4:
             base_reward = 0.2
+        elif diff <= 0.5:
+            base_reward = 0.1
         else:
             base_reward = 0.0
 
-        if agent_mark == 1.0 and manual_mark < 0.5:
-            base_reward = max(0.0, base_reward - 0.3)
-        if agent_mark == 0.0 and manual_mark > 0.5:
-            base_reward = max(0.0, base_reward - 0.3)
+        # Penalty for over-grading
+        if agent_mark >= 0.9 and manual_mark < 0.5:
+            base_reward = max(0.0, base_reward - 0.4)
 
-        return round(base_reward, 4)
+        # Penalty for under-grading
+        if agent_mark <= 0.1 and manual_mark > 0.5:
+            base_reward = max(0.0, base_reward - 0.4)
+
+        # Bonus for using semantic and concept signals correctly
+        semantic = self._check_keyword_match(
+            question["student_answer"], question["answer_key"]
+        )
+        concept = question.get("concept_coverage", 0.0)
+        signal_alignment = 1.0 - abs(agent_mark - (semantic + concept) / 2)
+        bonus = round(signal_alignment * 0.1, 4)
+
+        # Consecutive accuracy bonus
+        if diff <= 0.1:
+            self.consecutive_accurate += 1
+            if self.consecutive_accurate >= 2:
+                bonus += 0.05
+        else:
+            self.consecutive_accurate = 0
+
+        final_reward = round(min(1.0, base_reward + bonus), 4)
+        return final_reward
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
         idx = min(self.current_index, len(self.questions) - 1)
@@ -121,4 +154,6 @@ class GradingEnvironment:
         }
         path = self.DATA_PATH / file_map[task_id]
         with open(path, "r") as f:
-            self.questions = json.load(f)
+            self.all_questions = json.load(f)
+        # Initial random selection
+        self.questions = random.sample(self.all_questions, min(3, len(self.all_questions)))

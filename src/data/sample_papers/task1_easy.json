@@ -25,5 +25,68 @@
     "max_marks": 1.0,
     "concept_coverage": 0.4,
     "summary": "Student gives partial answer missing key components"
+  },
+  {
+    "question": "What is the capital of France?",
+    "student_answer": "Paris is the capital of France",
+    "answer_key": "Paris is the capital and largest city of France",
+    "manual_mark": 1.0,
+    "max_marks": 1.0,
+    "concept_coverage": 0.85,
+    "summary": "Student correctly identifies Paris as capital"
+  },
+  {
+    "question": "What is the speed of light?",
+    "student_answer": "The speed of light is approximately 3 times 10 to the power 8 meters per second",
+    "answer_key": "The speed of light in vacuum is approximately 3x10^8 meters per second or 299792458 m/s",
+    "manual_mark": 0.9,
+    "max_marks": 1.0,
+    "concept_coverage": 0.8,
+    "summary": "Student gives correct approximation of speed of light"
+  },
+  {
+    "question": "What is the boiling point of water?",
+    "student_answer": "Water boils at 100 degrees Celsius",
+    "answer_key": "Water boils at 100 degrees Celsius or 212 degrees Fahrenheit at standard atmospheric pressure",
+    "manual_mark": 0.8,
+    "max_marks": 1.0,
+    "concept_coverage": 0.7,
+    "summary": "Student gives correct temperature but misses Fahrenheit and pressure condition"
+  },
+  {
+    "question": "Who invented the telephone?",
+    "student_answer": "Alexander Graham Bell invented the telephone",
+    "answer_key": "Alexander Graham Bell is credited with inventing the telephone in 1876",
+    "manual_mark": 0.9,
+    "max_marks": 1.0,
+    "concept_coverage": 0.8,
+    "summary": "Student correctly identifies Bell but misses the year"
+  },
+  {
+    "question": "What is the powerhouse of the cell?",
+    "student_answer": "Mitochondria is the powerhouse of the cell",
+    "answer_key": "Mitochondria is the powerhouse of the cell as it produces ATP energy through cellular respiration",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.6,
+    "summary": "Student gives correct answer but misses ATP and cellular respiration"
+  },
+  {
+    "question": "What is the largest planet in the solar system?",
+    "student_answer": "Jupiter is the largest planet",
+    "answer_key": "Jupiter is the largest planet in the solar system with a mass greater than all other planets combined",
+    "manual_mark": 0.8,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student correctly identifies Jupiter but misses comparative size detail"
+  },
+  {
+    "question": "What is gravity?",
+    "student_answer": "Gravity is a force that pulls objects toward each other",
+    "answer_key": "Gravity is a fundamental force of attraction between objects with mass. On Earth it pulls objects toward the center with acceleration of 9.8 m/s squared",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.6,
+    "summary": "Student gives basic definition but misses acceleration value and Earth specifics"
   }
 ]

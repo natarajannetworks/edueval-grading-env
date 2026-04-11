@@ -6,7 +6,7 @@
     "manual_mark": 0.65,
     "max_marks": 1.0,
     "concept_coverage": 0.6,
-    "summary": "Student covers urbanization and child labor but misses capitalism, agrarian shift and technological innovation aspects"
+    "summary": "Student covers urbanization and child labor but misses capitalism, agrarian shift and technological innovation"
   },
   {
     "question": "Discuss the ethical implications of artificial intelligence",
@@ -25,5 +25,68 @@
     "max_marks": 1.0,
     "concept_coverage": 0.5,
     "summary": "Student covers gene therapy and cancer but misses CRISPR, pharmacogenomics and forensic medicine"
+  },
+  {
+    "question": "Analyze the causes and consequences of climate change",
+    "student_answer": "Climate change is caused by burning fossil fuels which releases CO2. This causes global warming, melting ice caps, rising sea levels and extreme weather. We need to switch to renewable energy to stop it.",
+    "answer_key": "Climate change is driven by anthropogenic greenhouse gas emissions, deforestation and industrial activity causing global temperature rise, sea level rise, biodiversity loss, extreme weather events, food security threats and economic disruption requiring systemic policy and technological responses.",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student covers main causes and effects but misses biodiversity loss, food security and policy response depth"
+  },
+  {
+    "question": "Evaluate the role of social media in modern democracy",
+    "student_answer": "Social media helps people share political opinions and organize protests. But it also spreads misinformation and can be used to manipulate elections. It gives everyone a voice but also creates echo chambers.",
+    "answer_key": "Social media impacts democracy through political mobilization, citizen journalism, misinformation spread, foreign interference, algorithmic polarization, echo chambers, increased political participation, and challenges to traditional media gatekeeping.",
+    "manual_mark": 0.72,
+    "max_marks": 1.0,
+    "concept_coverage": 0.68,
+    "summary": "Student covers misinformation and echo chambers but misses foreign interference and algorithmic polarization"
+  },
+  {
+    "question": "Discuss the impact of globalization on developing countries",
+    "student_answer": "Globalization has helped developing countries grow economically by attracting foreign investment and creating jobs. But it has also led to exploitation of workers and damage to local industries that cannot compete with multinational companies.",
+    "answer_key": "Globalization affects developing nations through foreign direct investment, technology transfer, labor exploitation, cultural homogenization, dependency on developed economies, erosion of local industries, improved access to global markets, and widening inequality within nations.",
+    "manual_mark": 0.68,
+    "max_marks": 1.0,
+    "concept_coverage": 0.62,
+    "summary": "Student covers FDI and worker exploitation but misses cultural homogenization and dependency theory"
+  },
+  {
+    "question": "Critically examine the causes of the 2008 global financial crisis",
+    "student_answer": "The 2008 financial crisis was caused by risky mortgage lending in the US. Banks gave loans to people who could not repay them. These bad loans were bundled and sold to investors. When the housing market collapsed everything fell apart.",
+    "answer_key": "The 2008 crisis resulted from subprime mortgage lending, mortgage backed securities, credit default swaps, regulatory failures, excessive leverage, rating agency failures, global contagion through interconnected financial systems and moral hazard in too-big-to-fail institutions.",
+    "manual_mark": 0.65,
+    "max_marks": 1.0,
+    "concept_coverage": 0.58,
+    "summary": "Student covers subprime lending and securitization but misses regulatory failure, CDS and systemic risk"
+  },
+  {
+    "question": "Analyze the philosophical concept of free will versus determinism",
+    "student_answer": "Free will means we can make our own choices. Determinism says everything is predetermined by past events and physical laws. Some philosophers argue we have no real free will because our choices are shaped by our genes and environment.",
+    "answer_key": "The free will versus determinism debate encompasses hard determinism, compatibilism, libertarian free will, quantum indeterminacy arguments, neuroscientific perspectives on decision making, moral responsibility implications and the role of consciousness in choice.",
+    "manual_mark": 0.6,
+    "max_marks": 1.0,
+    "concept_coverage": 0.52,
+    "summary": "Student covers basic concepts but misses compatibilism, quantum arguments and moral responsibility implications"
+  },
+  {
+    "question": "Evaluate the effectiveness of the United Nations in maintaining world peace",
+    "student_answer": "The UN has helped prevent some conflicts through peacekeeping missions and diplomacy. But it has failed in many cases like Rwanda and Syria because powerful countries can veto resolutions. The UN still plays an important role in humanitarian aid.",
+    "answer_key": "UN effectiveness in peace maintenance involves Security Council veto power limitations, peacekeeping mission successes and failures, preventive diplomacy, humanitarian interventions, norm setting through international law, and structural reforms needed for modern geopolitical challenges.",
+    "manual_mark": 0.72,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student covers veto power and peacekeeping but misses norm setting, international law and structural reform needs"
+  },
+  {
+    "question": "Discuss the psychological and social effects of poverty",
+    "student_answer": "Poverty causes stress and mental health problems. Poor people have less access to education and healthcare. Children growing up in poverty often struggle academically. Poverty also leads to crime and social unrest in communities.",
+    "answer_key": "Poverty effects include chronic stress and mental health disorders, intergenerational poverty cycles, educational disadvantage, healthcare access inequality, social exclusion, increased crime rates, reduced life expectancy, diminished social mobility and erosion of community cohesion.",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student covers stress, education and crime but misses intergenerational cycles, social mobility and life expectancy"
   }
 ]

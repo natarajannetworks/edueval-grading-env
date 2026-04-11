@@ -2,9 +2,9 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 
-# ✅ Correct relative imports
 from envs.grading_env.models import GradingAction, GradingObservation, GradingState
 from .environment import GradingEnvironment
+
 app = FastAPI(
     title="EduEval Grading Environment",
     description="OpenEnv environment for automated answer sheet grading and evaluation",
@@ -25,7 +25,6 @@ environments = {
     3: GradingEnvironment(task_id=3),
 }
 
-# -------------------- ROOT UI --------------------
 @app.get("/", response_class=HTMLResponse)
 def root():
     return """
@@ -49,11 +48,11 @@ def root():
                     </ul>
                 </div>
                 <div class="flex justify-center gap-6 mt-10">
-                    <a href="/docs" 
+                    <a href="/docs"
                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow">
                         📄 API Docs
                     </a>
-                    <a href="https://github.com/YOUR_USERNAME/YOUR_REPO" 
+                    <a href="https://github.com/natarajannetworks/edueval-grading-env"
                        target="_blank"
                        class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow">
                         🔗 GitHub
@@ -64,11 +63,11 @@ def root():
     </html>
     """
 
-# -------------------- API --------------------
 @app.post("/reset", response_model=GradingObservation)
 def reset(task_id: int = 1):
     if task_id not in environments:
         raise HTTPException(400, "task_id must be 1, 2, or 3")
+    environments[task_id] = GradingEnvironment(task_id=task_id)
     return environments[task_id].reset()
 
 @app.post("/step")
@@ -106,6 +105,7 @@ def health():
         "env": "EduEval",
         "message": "Environment is running successfully"
     }
+
 def main():
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=7860)

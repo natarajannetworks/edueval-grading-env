@@ -25,5 +25,68 @@
     "max_marks": 1.0,
     "concept_coverage": 0.75,
     "summary": "Student gives good definition but misses algorithmic detail and decision making aspect"
+  },
+  {
+    "question": "Explain the concept of supply and demand",
+    "student_answer": "When supply is high and demand is low, prices fall. When demand is high and supply is low, prices rise.",
+    "answer_key": "Supply and demand is an economic model where price is determined by the relationship between availability of a product and desire for it. High demand with low supply raises prices while low demand with high supply lowers prices.",
+    "manual_mark": 0.75,
+    "max_marks": 1.0,
+    "concept_coverage": 0.7,
+    "summary": "Student understands the relationship but misses the economic model framing"
+  },
+  {
+    "question": "What is the greenhouse effect?",
+    "student_answer": "The greenhouse effect is when gases in the atmosphere trap heat from the sun and warm the Earth.",
+    "answer_key": "The greenhouse effect occurs when greenhouse gases like CO2 and methane trap solar radiation in the atmosphere preventing heat from escaping into space and warming the planet.",
+    "manual_mark": 0.75,
+    "max_marks": 1.0,
+    "concept_coverage": 0.68,
+    "summary": "Student gives correct basic explanation but misses specific gases and radiation trapping mechanism"
+  },
+  {
+    "question": "Explain how vaccines work",
+    "student_answer": "Vaccines introduce a weak or dead form of a virus so the immune system can learn to fight it without getting sick.",
+    "answer_key": "Vaccines work by introducing antigens or weakened pathogens to stimulate the immune system to produce antibodies creating immunological memory so the body can fight future infections.",
+    "manual_mark": 0.8,
+    "max_marks": 1.0,
+    "concept_coverage": 0.72,
+    "summary": "Student gives good explanation but misses antibody production and immunological memory terms"
+  },
+  {
+    "question": "What is inflation?",
+    "student_answer": "Inflation is when prices of goods and services increase over time and the purchasing power of money decreases.",
+    "answer_key": "Inflation is the rate at which the general level of prices for goods and services rises over time resulting in decreased purchasing power of currency measured by CPI.",
+    "manual_mark": 0.8,
+    "max_marks": 1.0,
+    "concept_coverage": 0.75,
+    "summary": "Student gives correct definition but misses rate measurement and CPI reference"
+  },
+  {
+    "question": "Explain the difference between mitosis and meiosis",
+    "student_answer": "Mitosis produces two identical cells for growth and repair. Meiosis produces four cells with half the chromosomes for reproduction.",
+    "answer_key": "Mitosis is cell division producing two genetically identical daughter cells used for growth and repair. Meiosis is cell division producing four genetically unique haploid cells used for sexual reproduction.",
+    "manual_mark": 0.85,
+    "max_marks": 1.0,
+    "concept_coverage": 0.8,
+    "summary": "Student gives good comparison but misses genetic uniqueness in meiosis"
+  },
+  {
+    "question": "What is democracy?",
+    "student_answer": "Democracy is a system of government where people vote for their leaders and have a say in how the country is run.",
+    "answer_key": "Democracy is a system of government where power is vested in the people who exercise it directly or through elected representatives characterized by free elections rule of law and protection of individual rights.",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student gives basic definition but misses rule of law and individual rights protection"
+  },
+  {
+    "question": "Explain Newton's Third Law of Motion",
+    "student_answer": "For every action there is an equal and opposite reaction.",
+    "answer_key": "Newton's Third Law states that for every action force there is an equal and opposite reaction force acting on different objects. When object A exerts force on object B object B exerts equal force back on A.",
+    "manual_mark": 0.7,
+    "max_marks": 1.0,
+    "concept_coverage": 0.6,
+    "summary": "Student states the law correctly but misses the explanation of forces acting on different objects"
   }
 ]
