@@ -1,6 +1,6 @@
 name: grading-env
 version: 1.0
-description: "EduEval - Automated Answer Sheet Grading Environment for RL agents. Simulates real-world educational grading pipeline."
+description: "EduEval - Automated Answer Sheet Grading Environment with 3 distinct grading tasks: Factual, Conceptual and Essay grading."
 entrypoint: python inference.py
 env:
   python: "3.11"
@@ -13,20 +13,23 @@ tags:
 tasks:
   - id: 1
     name: grading-easy
-    description: "Grade basic factual questions with simple one-line answers. Agent must award marks 0.0-1.0 matching expert grader."
+    description: "Factual Grading - Grade objective factual questions with clear right or wrong answers. Agent must identify correct answers and award full or zero marks."
     difficulty: easy
+    question_type: factual
     max_steps: 3
     reward_range: [0.0, 1.0]
   - id: 2
     name: grading-medium
-    description: "Grade multi-concept answers requiring partial credit scoring. Agent must identify concept coverage and semantic similarity."
+    description: "Conceptual Grading - Grade concept-based answers requiring partial credit. Agent must evaluate concept coverage and semantic understanding."
     difficulty: medium
+    question_type: conceptual
     max_steps: 3
     reward_range: [0.0, 1.0]
   - id: 3
     name: grading-hard
-    description: "Grade complex descriptive answers requiring deep semantic evaluation. Agent must handle nuanced partial credit scenarios."
+    description: "Essay Grading - Grade complex descriptive essays requiring holistic evaluation of content accuracy concept coverage and critical analysis depth."
     difficulty: hard
+    question_type: essay
     max_steps: 3
     reward_range: [0.0, 1.0]
 action_space:
@@ -66,13 +69,13 @@ observation_space:
     description: "Maximum marks available for this question"
   task_id:
     type: int
-    description: "Task difficulty level (1=easy, 2=medium, 3=hard)"
+    description: "Task type (1=factual, 2=conceptual, 3=essay)"
   done:
     type: bool
     description: "Whether the episode is complete"
 reward_function:
   type: dense
-  description: "Reward based on accuracy of marks awarded vs expert grader. Includes bonuses for consistency and penalties for extreme over/under grading."
+  description: "Task-specific reward functions. Factual uses strict binary-leaning rewards. Conceptual uses graduated partial credit. Essay uses holistic scoring with bonuses."
   range: [0.0, 1.0]
 baseline:
   model: "Qwen/Qwen2.5-72B-Instruct"

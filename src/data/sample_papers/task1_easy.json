@@ -1,92 +1,112 @@
 [
   {
-    "question": "What is Newton's Second Law of Motion?",
-    "student_answer": "Force equals mass times acceleration",
-    "answer_key": "Force equals mass multiplied by acceleration. F = ma",
-    "manual_mark": 1.0,
-    "max_marks": 1.0,
-    "concept_coverage": 0.9,
-    "summary": "Student correctly states F=ma relationship"
-  },
-  {
     "question": "What is the chemical formula for water?",
     "student_answer": "H2O",
-    "answer_key": "H2O - two hydrogen atoms and one oxygen atom",
+    "answer_key": "H2O",
+    "correct_answer": "H2O",
+    "question_type": "factual",
     "manual_mark": 1.0,
     "max_marks": 1.0,
-    "concept_coverage": 0.7,
-    "summary": "Student gives correct formula but no explanation"
-  },
-  {
-    "question": "What is photosynthesis?",
-    "student_answer": "Plants make food using sunlight",
-    "answer_key": "Photosynthesis converts sunlight water and CO2 into glucose and oxygen",
-    "manual_mark": 0.5,
-    "max_marks": 1.0,
-    "concept_coverage": 0.4,
-    "summary": "Student gives partial answer missing key components"
+    "concept_coverage": 1.0,
+    "summary": "Student gives exact correct answer"
   },
   {
     "question": "What is the capital of France?",
-    "student_answer": "Paris is the capital of France",
-    "answer_key": "Paris is the capital and largest city of France",
+    "student_answer": "Paris",
+    "answer_key": "Paris",
+    "correct_answer": "Paris",
+    "question_type": "factual",
     "manual_mark": 1.0,
     "max_marks": 1.0,
-    "concept_coverage": 0.85,
-    "summary": "Student correctly identifies Paris as capital"
+    "concept_coverage": 1.0,
+    "summary": "Student gives exact correct answer"
   },
   {
-    "question": "What is the speed of light?",
-    "student_answer": "The speed of light is approximately 3 times 10 to the power 8 meters per second",
-    "answer_key": "The speed of light in vacuum is approximately 3x10^8 meters per second or 299792458 m/s",
+    "question": "What is the speed of light in m/s?",
+    "student_answer": "3 times 10 to the power 8",
+    "answer_key": "3x10^8 m/s or 299792458 m/s",
+    "correct_answer": "3x10^8",
+    "question_type": "factual",
     "manual_mark": 0.9,
     "max_marks": 1.0,
-    "concept_coverage": 0.8,
-    "summary": "Student gives correct approximation of speed of light"
-  },
-  {
-    "question": "What is the boiling point of water?",
-    "student_answer": "Water boils at 100 degrees Celsius",
-    "answer_key": "Water boils at 100 degrees Celsius or 212 degrees Fahrenheit at standard atmospheric pressure",
-    "manual_mark": 0.8,
-    "max_marks": 1.0,
-    "concept_coverage": 0.7,
-    "summary": "Student gives correct temperature but misses Fahrenheit and pressure condition"
+    "concept_coverage": 0.85,
+    "summary": "Student gives correct approximation"
   },
   {
     "question": "Who invented the telephone?",
-    "student_answer": "Alexander Graham Bell invented the telephone",
-    "answer_key": "Alexander Graham Bell is credited with inventing the telephone in 1876",
+    "student_answer": "Alexander Graham Bell",
+    "answer_key": "Alexander Graham Bell",
+    "correct_answer": "Alexander Graham Bell",
+    "question_type": "factual",
+    "manual_mark": 1.0,
+    "max_marks": 1.0,
+    "concept_coverage": 1.0,
+    "summary": "Student gives exact correct answer"
+  },
+  {
+    "question": "What is the boiling point of water in Celsius?",
+    "student_answer": "100 degrees",
+    "answer_key": "100 degrees Celsius",
+    "correct_answer": "100",
+    "question_type": "factual",
     "manual_mark": 0.9,
     "max_marks": 1.0,
-    "concept_coverage": 0.8,
-    "summary": "Student correctly identifies Bell but misses the year"
+    "concept_coverage": 0.9,
+    "summary": "Student gives correct answer but misses unit specification"
+  },
+  {
+    "question": "What planet is closest to the Sun?",
+    "student_answer": "Mercury",
+    "answer_key": "Mercury",
+    "correct_answer": "Mercury",
+    "question_type": "factual",
+    "manual_mark": 1.0,
+    "max_marks": 1.0,
+    "concept_coverage": 1.0,
+    "summary": "Student gives exact correct answer"
   },
   {
     "question": "What is the powerhouse of the cell?",
-    "student_answer": "Mitochondria is the powerhouse of the cell",
-    "answer_key": "Mitochondria is the powerhouse of the cell as it produces ATP energy through cellular respiration",
-    "manual_mark": 0.7,
+    "student_answer": "Mitochondria",
+    "answer_key": "Mitochondria",
+    "correct_answer": "Mitochondria",
+    "question_type": "factual",
+    "manual_mark": 1.0,
     "max_marks": 1.0,
-    "concept_coverage": 0.6,
-    "summary": "Student gives correct answer but misses ATP and cellular respiration"
+    "concept_coverage": 1.0,
+    "summary": "Student gives exact correct answer"
+  },
+  {
+    "question": "What is Newton's Second Law formula?",
+    "student_answer": "F equals ma",
+    "answer_key": "F = ma",
+    "correct_answer": "F=ma",
+    "question_type": "factual",
+    "manual_mark": 1.0,
+    "max_marks": 1.0,
+    "concept_coverage": 1.0,
+    "summary": "Student gives correct formula"
   },
   {
     "question": "What is the largest planet in the solar system?",
-    "student_answer": "Jupiter is the largest planet",
-    "answer_key": "Jupiter is the largest planet in the solar system with a mass greater than all other planets combined",
-    "manual_mark": 0.8,
+    "student_answer": "Saturn",
+    "answer_key": "Jupiter",
+    "correct_answer": "Jupiter",
+    "question_type": "factual",
+    "manual_mark": 0.0,
     "max_marks": 1.0,
-    "concept_coverage": 0.65,
-    "summary": "Student correctly identifies Jupiter but misses comparative size detail"
+    "concept_coverage": 0.0,
+    "summary": "Student gives wrong answer"
   },
   {
-    "question": "What is gravity?",
-    "student_answer": "Gravity is a force that pulls objects toward each other",
-    "answer_key": "Gravity is a fundamental force of attraction between objects with mass. On Earth it pulls objects toward the center with acceleration of 9.8 m/s squared",
-    "manual_mark": 0.7,
+    "question": "What gas do plants absorb during photosynthesis?",
+    "student_answer": "Carbon dioxide",
+    "answer_key": "Carbon dioxide CO2",
+    "correct_answer": "Carbon dioxide",
+    "question_type": "factual",
+    "manual_mark": 1.0,
     "max_marks": 1.0,
-    "concept_coverage": 0.6,
-    "summary": "Student gives basic definition but misses acceleration value and Earth specifics"
+    "concept_coverage": 1.0,
+    "summary": "Student gives correct answer"
   }
 ]

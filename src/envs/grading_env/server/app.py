@@ -79,7 +79,7 @@ def root():
                     Submit Answer
                 </button>
 
-                <p id="result" class="text-gray-700 text-sm"></p>
+                <p id="result" class="text-gray-700 text-sm text-center"></p>
             </div>
 
         </div>
@@ -96,8 +96,11 @@ def root():
                 });
                 const data = await res.json();
 
+                // ✅ FIXED: correct path to question
+                const question = data.question || data.observation?.question || "No question found";
+
                 document.getElementById("result").innerText =
-                    "Question: " + data.question;
+                    "Question: " + question;
             }
 
             async function submitAnswer() {
@@ -115,8 +118,13 @@ def root():
 
                 const data = await res.json();
 
+                // ✅ FIXED: include feedback if available
+                const feedback = data.observation?.feedback || "";
+
                 document.getElementById("result").innerText =
-                    "Score: " + data.reward + " | Completed: " + data.done;
+                    "Score: " + data.reward + 
+                    " | Completed: " + data.done + 
+                    (feedback ? " | Feedback: " + feedback : "");
             }
         </script>
 

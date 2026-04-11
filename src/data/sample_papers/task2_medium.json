@@ -1,92 +1,112 @@
 [
   {
-    "question": "Explain the water cycle",
-    "student_answer": "Water evaporates from oceans, forms clouds, and falls as rain. The rain flows into rivers and back to the ocean.",
-    "answer_key": "The water cycle involves evaporation, condensation, precipitation, and collection. Water evaporates due to solar energy, condenses to form clouds, precipitates as rain or snow, and collects in water bodies.",
-    "manual_mark": 0.7,
-    "max_marks": 1.0,
-    "concept_coverage": 0.65,
-    "summary": "Student covers main stages but misses technical terms like condensation and precipitation"
-  },
-  {
-    "question": "Describe the causes of World War 1",
-    "student_answer": "The assassination of Archduke Franz Ferdinand triggered the war. There were also alliances between countries that pulled everyone in.",
-    "answer_key": "WWI was caused by MAIN factors: Militarism, Alliances, Imperialism, Nationalism. The assassination of Franz Ferdinand was the immediate trigger.",
-    "manual_mark": 0.6,
-    "max_marks": 1.0,
-    "concept_coverage": 0.55,
-    "summary": "Student identifies trigger and alliances but misses militarism, imperialism and nationalism"
-  },
-  {
-    "question": "What is machine learning?",
-    "student_answer": "Machine learning is when computers learn from data without being explicitly programmed for every task.",
-    "answer_key": "Machine learning is a subset of AI where systems learn and improve from experience without being explicitly programmed using algorithms to parse data and make decisions.",
+    "question": "Explain how vaccines work in the human body.",
+    "student_answer": "Vaccines introduce a weak or dead form of a virus so the immune system can learn to fight it without getting sick. The body produces antibodies.",
+    "answer_key": "Vaccines introduce antigens or weakened pathogens to stimulate the immune system to produce antibodies creating immunological memory so the body can fight future infections.",
+    "question_type": "conceptual",
     "manual_mark": 0.8,
     "max_marks": 1.0,
     "concept_coverage": 0.75,
-    "summary": "Student gives good definition but misses algorithmic detail and decision making aspect"
+    "key_concepts": ["antigens", "antibodies", "immune system", "immunological memory", "pathogens"],
+    "summary": "Student covers antibodies and immune system but misses immunological memory and antigen terminology"
   },
   {
-    "question": "Explain the concept of supply and demand",
-    "student_answer": "When supply is high and demand is low, prices fall. When demand is high and supply is low, prices rise.",
-    "answer_key": "Supply and demand is an economic model where price is determined by the relationship between availability of a product and desire for it. High demand with low supply raises prices while low demand with high supply lowers prices.",
+    "question": "Explain the concept of supply and demand.",
+    "student_answer": "When supply is high and demand is low prices fall. When demand is high and supply is low prices rise.",
+    "answer_key": "Supply and demand is an economic model where price is determined by availability of a product and desire for it. High demand with low supply raises prices while low demand with high supply lowers prices.",
+    "question_type": "conceptual",
     "manual_mark": 0.75,
     "max_marks": 1.0,
     "concept_coverage": 0.7,
-    "summary": "Student understands the relationship but misses the economic model framing"
+    "key_concepts": ["price", "supply", "demand", "economic model", "availability"],
+    "summary": "Student understands relationship but misses economic model framing"
   },
   {
     "question": "What is the greenhouse effect?",
     "student_answer": "The greenhouse effect is when gases in the atmosphere trap heat from the sun and warm the Earth.",
     "answer_key": "The greenhouse effect occurs when greenhouse gases like CO2 and methane trap solar radiation in the atmosphere preventing heat from escaping into space and warming the planet.",
+    "question_type": "conceptual",
     "manual_mark": 0.75,
     "max_marks": 1.0,
     "concept_coverage": 0.68,
-    "summary": "Student gives correct basic explanation but misses specific gases and radiation trapping mechanism"
+    "key_concepts": ["greenhouse gases", "CO2", "methane", "solar radiation", "atmosphere", "heat trapping"],
+    "summary": "Student gives correct basic explanation but misses specific gases and radiation mechanism"
   },
   {
-    "question": "Explain how vaccines work",
-    "student_answer": "Vaccines introduce a weak or dead form of a virus so the immune system can learn to fight it without getting sick.",
-    "answer_key": "Vaccines work by introducing antigens or weakened pathogens to stimulate the immune system to produce antibodies creating immunological memory so the body can fight future infections.",
-    "manual_mark": 0.8,
-    "max_marks": 1.0,
-    "concept_coverage": 0.72,
-    "summary": "Student gives good explanation but misses antibody production and immunological memory terms"
-  },
-  {
-    "question": "What is inflation?",
-    "student_answer": "Inflation is when prices of goods and services increase over time and the purchasing power of money decreases.",
-    "answer_key": "Inflation is the rate at which the general level of prices for goods and services rises over time resulting in decreased purchasing power of currency measured by CPI.",
-    "manual_mark": 0.8,
-    "max_marks": 1.0,
-    "concept_coverage": 0.75,
-    "summary": "Student gives correct definition but misses rate measurement and CPI reference"
-  },
-  {
-    "question": "Explain the difference between mitosis and meiosis",
+    "question": "Explain the difference between mitosis and meiosis.",
     "student_answer": "Mitosis produces two identical cells for growth and repair. Meiosis produces four cells with half the chromosomes for reproduction.",
     "answer_key": "Mitosis is cell division producing two genetically identical daughter cells used for growth and repair. Meiosis is cell division producing four genetically unique haploid cells used for sexual reproduction.",
+    "question_type": "conceptual",
     "manual_mark": 0.85,
     "max_marks": 1.0,
     "concept_coverage": 0.8,
+    "key_concepts": ["mitosis", "meiosis", "identical", "haploid", "reproduction", "growth"],
     "summary": "Student gives good comparison but misses genetic uniqueness in meiosis"
   },
   {
-    "question": "What is democracy?",
+    "question": "Explain what inflation is and what causes it.",
+    "student_answer": "Inflation is when prices of goods and services increase over time and the purchasing power of money decreases. It is caused by too much money in the economy.",
+    "answer_key": "Inflation is the rate at which general price levels rise reducing purchasing power. Causes include excess money supply, demand pull factors, cost push factors and supply chain disruptions.",
+    "question_type": "conceptual",
+    "manual_mark": 0.75,
+    "max_marks": 1.0,
+    "concept_coverage": 0.7,
+    "key_concepts": ["prices", "purchasing power", "money supply", "demand pull", "cost push"],
+    "summary": "Student gives correct definition but misses multiple causes of inflation"
+  },
+  {
+    "question": "Explain Newton's Third Law of Motion with an example.",
+    "student_answer": "For every action there is an equal and opposite reaction. For example when you push a wall the wall pushes back on you.",
+    "answer_key": "Newton's Third Law states that for every action force there is an equal and opposite reaction force acting on different objects. Example: a rocket expels gas downward and the reaction force propels it upward.",
+    "question_type": "conceptual",
+    "manual_mark": 0.8,
+    "max_marks": 1.0,
+    "concept_coverage": 0.75,
+    "key_concepts": ["action", "reaction", "equal", "opposite", "force", "different objects"],
+    "summary": "Student states law correctly with example but misses that forces act on different objects"
+  },
+  {
+    "question": "Explain what democracy is and its key features.",
     "student_answer": "Democracy is a system of government where people vote for their leaders and have a say in how the country is run.",
-    "answer_key": "Democracy is a system of government where power is vested in the people who exercise it directly or through elected representatives characterized by free elections rule of law and protection of individual rights.",
+    "answer_key": "Democracy is a system of government where power is vested in the people exercised through elected representatives characterized by free elections rule of law protection of individual rights and separation of powers.",
+    "question_type": "conceptual",
+    "manual_mark": 0.65,
+    "max_marks": 1.0,
+    "concept_coverage": 0.6,
+    "key_concepts": ["elections", "rule of law", "individual rights", "separation of powers", "representatives"],
+    "summary": "Student gives basic definition but misses rule of law, rights and separation of powers"
+  },
+  {
+    "question": "Explain how the water cycle works.",
+    "student_answer": "Water evaporates from oceans forms clouds and falls as rain. The rain flows into rivers and back to the ocean.",
+    "answer_key": "The water cycle involves evaporation condensation precipitation and collection. Water evaporates due to solar energy condenses to form clouds precipitates as rain or snow and collects in water bodies.",
+    "question_type": "conceptual",
     "manual_mark": 0.7,
     "max_marks": 1.0,
     "concept_coverage": 0.65,
-    "summary": "Student gives basic definition but misses rule of law and individual rights protection"
+    "key_concepts": ["evaporation", "condensation", "precipitation", "collection", "solar energy"],
+    "summary": "Student covers main stages but misses technical terms and solar energy role"
   },
   {
-    "question": "Explain Newton's Third Law of Motion",
-    "student_answer": "For every action there is an equal and opposite reaction.",
-    "answer_key": "Newton's Third Law states that for every action force there is an equal and opposite reaction force acting on different objects. When object A exerts force on object B object B exerts equal force back on A.",
-    "manual_mark": 0.7,
+    "question": "Explain what machine learning is.",
+    "student_answer": "Machine learning is when computers learn from data without being explicitly programmed for every task.",
+    "answer_key": "Machine learning is a subset of AI where systems learn and improve from experience without being explicitly programmed using algorithms to parse data make predictions and improve through feedback.",
+    "question_type": "conceptual",
+    "manual_mark": 0.75,
     "max_marks": 1.0,
-    "concept_coverage": 0.6,
-    "summary": "Student states the law correctly but misses the explanation of forces acting on different objects"
+    "concept_coverage": 0.7,
+    "key_concepts": ["AI", "algorithms", "data", "predictions", "feedback", "learning"],
+    "summary": "Student gives good definition but misses algorithmic detail and feedback loop"
+  },
+  {
+    "question": "Explain the causes of World War 1.",
+    "student_answer": "The assassination of Archduke Franz Ferdinand triggered the war. There were also alliances between countries that pulled everyone in.",
+    "answer_key": "WWI was caused by MAIN factors: Militarism Alliances Imperialism Nationalism. The assassination of Franz Ferdinand was the immediate trigger that activated the alliance system.",
+    "question_type": "conceptual",
+    "manual_mark": 0.6,
+    "max_marks": 1.0,
+    "concept_coverage": 0.55,
+    "key_concepts": ["militarism", "alliances", "imperialism", "nationalism", "assassination", "Franz Ferdinand"],
+    "summary": "Student identifies trigger and alliances but misses militarism imperialism and nationalism"
   }
 ]

@@ -1,92 +1,162 @@
 [
   {
-    "question": "Critically analyze the impact of the Industrial Revolution on society",
+    "question": "Critically analyze the impact of the Industrial Revolution on modern society.",
     "student_answer": "The Industrial Revolution changed how people worked. Factories replaced home-based work. Cities grew bigger as people moved for jobs. There were bad working conditions especially for children. But it also made goods cheaper and more available for everyone.",
-    "answer_key": "The Industrial Revolution transformed society through urbanization, shift from agrarian to industrial economy, emergence of working class, child labor issues, technological innovation, improved living standards over time, and laid groundwork for modern capitalism.",
+    "answer_key": "The Industrial Revolution transformed society through urbanization shift from agrarian to industrial economy emergence of working class child labor issues technological innovation improved living standards over time and laid groundwork for modern capitalism and globalization.",
+    "question_type": "essay",
     "manual_mark": 0.65,
     "max_marks": 1.0,
     "concept_coverage": 0.6,
-    "summary": "Student covers urbanization and child labor but misses capitalism, agrarian shift and technological innovation"
+    "key_concepts": ["urbanization", "working class", "child labor", "capitalism", "technological innovation", "agrarian", "globalization"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers urbanization and child labor but lacks critical analysis and misses capitalism and globalization"
   },
   {
-    "question": "Discuss the ethical implications of artificial intelligence",
+    "question": "Discuss the ethical implications of artificial intelligence in society.",
     "student_answer": "AI raises many ethical questions. It could take away jobs from people. There are also privacy concerns since AI can track people. AI systems can be biased if trained on biased data. We need regulations to make sure AI is used responsibly.",
-    "answer_key": "AI ethics encompasses job displacement and economic inequality, privacy and surveillance, algorithmic bias and fairness, accountability and transparency, autonomous weapons, data ownership, and the need for regulatory frameworks.",
+    "answer_key": "AI ethics encompasses job displacement and economic inequality privacy and surveillance algorithmic bias and fairness accountability and transparency autonomous weapons data ownership and the need for regulatory frameworks and international cooperation.",
+    "question_type": "essay",
     "manual_mark": 0.7,
     "max_marks": 1.0,
     "concept_coverage": 0.65,
-    "summary": "Student covers job displacement, privacy and bias but misses accountability, autonomous weapons and data ownership"
+    "key_concepts": ["job displacement", "privacy", "algorithmic bias", "accountability", "autonomous weapons", "data ownership", "regulatory frameworks"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers key issues but misses autonomous weapons data ownership and international cooperation"
   },
   {
-    "question": "Explain the significance of DNA in modern medicine",
-    "student_answer": "DNA contains genetic information. Doctors can now read DNA to find diseases. Gene therapy can fix genetic disorders. DNA testing is used in cancer treatment to find the right medicine.",
-    "answer_key": "DNA medical significance includes genetic disease diagnosis, pharmacogenomics for personalized medicine, gene therapy, CRISPR gene editing, cancer genomics, forensic medicine, and understanding hereditary conditions.",
-    "manual_mark": 0.55,
-    "max_marks": 1.0,
-    "concept_coverage": 0.5,
-    "summary": "Student covers gene therapy and cancer but misses CRISPR, pharmacogenomics and forensic medicine"
-  },
-  {
-    "question": "Analyze the causes and consequences of climate change",
-    "student_answer": "Climate change is caused by burning fossil fuels which releases CO2. This causes global warming, melting ice caps, rising sea levels and extreme weather. We need to switch to renewable energy to stop it.",
-    "answer_key": "Climate change is driven by anthropogenic greenhouse gas emissions, deforestation and industrial activity causing global temperature rise, sea level rise, biodiversity loss, extreme weather events, food security threats and economic disruption requiring systemic policy and technological responses.",
-    "manual_mark": 0.7,
-    "max_marks": 1.0,
-    "concept_coverage": 0.65,
-    "summary": "Student covers main causes and effects but misses biodiversity loss, food security and policy response depth"
-  },
-  {
-    "question": "Evaluate the role of social media in modern democracy",
-    "student_answer": "Social media helps people share political opinions and organize protests. But it also spreads misinformation and can be used to manipulate elections. It gives everyone a voice but also creates echo chambers.",
-    "answer_key": "Social media impacts democracy through political mobilization, citizen journalism, misinformation spread, foreign interference, algorithmic polarization, echo chambers, increased political participation, and challenges to traditional media gatekeeping.",
-    "manual_mark": 0.72,
-    "max_marks": 1.0,
-    "concept_coverage": 0.68,
-    "summary": "Student covers misinformation and echo chambers but misses foreign interference and algorithmic polarization"
-  },
-  {
-    "question": "Discuss the impact of globalization on developing countries",
-    "student_answer": "Globalization has helped developing countries grow economically by attracting foreign investment and creating jobs. But it has also led to exploitation of workers and damage to local industries that cannot compete with multinational companies.",
-    "answer_key": "Globalization affects developing nations through foreign direct investment, technology transfer, labor exploitation, cultural homogenization, dependency on developed economies, erosion of local industries, improved access to global markets, and widening inequality within nations.",
+    "question": "Analyze the causes and long-term consequences of climate change.",
+    "student_answer": "Climate change is caused by burning fossil fuels which releases CO2. This causes global warming melting ice caps rising sea levels and extreme weather. We need to switch to renewable energy to stop it.",
+    "answer_key": "Climate change is driven by anthropogenic greenhouse gas emissions deforestation and industrial activity causing global temperature rise sea level rise biodiversity loss extreme weather events food security threats economic disruption and geopolitical instability requiring systemic policy technological and behavioral responses.",
+    "question_type": "essay",
     "manual_mark": 0.68,
     "max_marks": 1.0,
     "concept_coverage": 0.62,
-    "summary": "Student covers FDI and worker exploitation but misses cultural homogenization and dependency theory"
+    "key_concepts": ["greenhouse gases", "deforestation", "biodiversity loss", "food security", "geopolitical", "systemic policy", "renewable energy"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers main causes and effects but misses biodiversity food security and geopolitical dimensions"
   },
   {
-    "question": "Critically examine the causes of the 2008 global financial crisis",
-    "student_answer": "The 2008 financial crisis was caused by risky mortgage lending in the US. Banks gave loans to people who could not repay them. These bad loans were bundled and sold to investors. When the housing market collapsed everything fell apart.",
-    "answer_key": "The 2008 crisis resulted from subprime mortgage lending, mortgage backed securities, credit default swaps, regulatory failures, excessive leverage, rating agency failures, global contagion through interconnected financial systems and moral hazard in too-big-to-fail institutions.",
-    "manual_mark": 0.65,
-    "max_marks": 1.0,
-    "concept_coverage": 0.58,
-    "summary": "Student covers subprime lending and securitization but misses regulatory failure, CDS and systemic risk"
-  },
-  {
-    "question": "Analyze the philosophical concept of free will versus determinism",
-    "student_answer": "Free will means we can make our own choices. Determinism says everything is predetermined by past events and physical laws. Some philosophers argue we have no real free will because our choices are shaped by our genes and environment.",
-    "answer_key": "The free will versus determinism debate encompasses hard determinism, compatibilism, libertarian free will, quantum indeterminacy arguments, neuroscientific perspectives on decision making, moral responsibility implications and the role of consciousness in choice.",
-    "manual_mark": 0.6,
-    "max_marks": 1.0,
-    "concept_coverage": 0.52,
-    "summary": "Student covers basic concepts but misses compatibilism, quantum arguments and moral responsibility implications"
-  },
-  {
-    "question": "Evaluate the effectiveness of the United Nations in maintaining world peace",
-    "student_answer": "The UN has helped prevent some conflicts through peacekeeping missions and diplomacy. But it has failed in many cases like Rwanda and Syria because powerful countries can veto resolutions. The UN still plays an important role in humanitarian aid.",
-    "answer_key": "UN effectiveness in peace maintenance involves Security Council veto power limitations, peacekeeping mission successes and failures, preventive diplomacy, humanitarian interventions, norm setting through international law, and structural reforms needed for modern geopolitical challenges.",
+    "question": "Evaluate the role of social media in shaping modern democracy.",
+    "student_answer": "Social media helps people share political opinions and organize protests. But it also spreads misinformation and can be used to manipulate elections. It gives everyone a voice but also creates echo chambers where people only see opinions they agree with.",
+    "answer_key": "Social media impacts democracy through political mobilization citizen journalism misinformation spread foreign interference algorithmic polarization echo chambers increased political participation challenges to traditional media gatekeeping and threats to electoral integrity.",
+    "question_type": "essay",
     "manual_mark": 0.72,
     "max_marks": 1.0,
-    "concept_coverage": 0.65,
-    "summary": "Student covers veto power and peacekeeping but misses norm setting, international law and structural reform needs"
+    "concept_coverage": 0.68,
+    "key_concepts": ["political mobilization", "misinformation", "foreign interference", "algorithmic polarization", "echo chambers", "electoral integrity"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers misinformation and echo chambers but misses foreign interference and algorithmic polarization"
   },
   {
-    "question": "Discuss the psychological and social effects of poverty",
+    "question": "Discuss the psychological and social effects of poverty on individuals and communities.",
     "student_answer": "Poverty causes stress and mental health problems. Poor people have less access to education and healthcare. Children growing up in poverty often struggle academically. Poverty also leads to crime and social unrest in communities.",
-    "answer_key": "Poverty effects include chronic stress and mental health disorders, intergenerational poverty cycles, educational disadvantage, healthcare access inequality, social exclusion, increased crime rates, reduced life expectancy, diminished social mobility and erosion of community cohesion.",
+    "answer_key": "Poverty effects include chronic stress and mental health disorders intergenerational poverty cycles educational disadvantage healthcare access inequality social exclusion increased crime rates reduced life expectancy diminished social mobility and erosion of community cohesion.",
+    "question_type": "essay",
     "manual_mark": 0.7,
     "max_marks": 1.0,
     "concept_coverage": 0.65,
-    "summary": "Student covers stress, education and crime but misses intergenerational cycles, social mobility and life expectancy"
+    "key_concepts": ["chronic stress", "intergenerational poverty", "social exclusion", "life expectancy", "social mobility", "community cohesion"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers stress education and crime but misses intergenerational cycles social mobility and life expectancy"
+  },
+  {
+    "question": "Critically examine the impact of globalization on developing countries.",
+    "student_answer": "Globalization has helped developing countries grow economically by attracting foreign investment and creating jobs. But it has also led to exploitation of workers and damage to local industries that cannot compete with multinational companies.",
+    "answer_key": "Globalization affects developing nations through foreign direct investment technology transfer labor exploitation cultural homogenization dependency on developed economies erosion of local industries improved access to global markets widening inequality and complex effects on sovereignty and governance.",
+    "question_type": "essay",
+    "manual_mark": 0.68,
+    "max_marks": 1.0,
+    "concept_coverage": 0.62,
+    "key_concepts": ["foreign direct investment", "labor exploitation", "cultural homogenization", "dependency", "inequality", "sovereignty"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers FDI and exploitation but misses cultural homogenization dependency theory and sovereignty"
+  },
+  {
+    "question": "Analyze the philosophical debate between free will and determinism.",
+    "student_answer": "Free will means we can make our own choices. Determinism says everything is predetermined by past events and physical laws. Some philosophers argue we have no real free will because our choices are shaped by our genes and environment.",
+    "answer_key": "The free will versus determinism debate encompasses hard determinism compatibilism libertarian free will quantum indeterminacy arguments neuroscientific perspectives on decision making moral responsibility implications and the role of consciousness in shaping human agency.",
+    "question_type": "essay",
+    "manual_mark": 0.6,
+    "max_marks": 1.0,
+    "concept_coverage": 0.52,
+    "key_concepts": ["hard determinism", "compatibilism", "libertarian free will", "quantum indeterminacy", "moral responsibility", "consciousness"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers basic concepts but misses compatibilism quantum arguments and moral responsibility"
+  },
+  {
+    "question": "Evaluate the effectiveness of the United Nations in maintaining world peace.",
+    "student_answer": "The UN has helped prevent some conflicts through peacekeeping missions and diplomacy. But it has failed in many cases like Rwanda and Syria because powerful countries can veto resolutions. The UN still plays an important role in humanitarian aid.",
+    "answer_key": "UN effectiveness involves Security Council veto power limitations peacekeeping successes and failures preventive diplomacy humanitarian interventions norm setting through international law structural reform challenges and the tension between state sovereignty and global governance.",
+    "question_type": "essay",
+    "manual_mark": 0.72,
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "key_concepts": ["veto power", "peacekeeping", "preventive diplomacy", "international law", "sovereignty", "global governance"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers veto and peacekeeping but misses international law sovereignty and global governance tension"
+  },
+  {
+    "question": "Critically analyze the role of technology in transforming education.",
+    "student_answer": "Technology has made education more accessible through online learning. Students can access information easily. But it has also created problems like screen addiction and reduced face to face interaction. Not all students have equal access to technology.",
+    "answer_key": "Technology transforms education through personalized learning adaptive algorithms online accessibility democratization of knowledge digital divide challenges reduced attention spans changing role of teachers blended learning models and questions about assessment integrity in digital environments.",
+    "question_type": "essay",
+    "manual_mark": 0.65,
+    "max_marks": 1.0,
+    "concept_coverage": 0.58,
+    "key_concepts": ["personalized learning", "adaptive algorithms", "digital divide", "democratization", "assessment integrity", "blended learning"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers accessibility and digital divide but misses adaptive learning assessment integrity and teacher role"
+  },
+  {
+    "question": "Discuss the causes and consequences of the 2008 global financial crisis.",
+    "student_answer": "The 2008 financial crisis was caused by risky mortgage lending in the US. Banks gave loans to people who could not repay them. These bad loans were bundled and sold to investors. When the housing market collapsed everything fell apart causing a global recession.",
+    "answer_key": "The 2008 crisis resulted from subprime mortgage lending mortgage backed securities credit default swaps regulatory failures excessive leverage rating agency failures global financial contagion moral hazard in too-big-to-fail institutions and lasting effects on global inequality and economic policy.",
+    "question_type": "essay",
+    "manual_mark": 0.65,
+    "max_marks": 1.0,
+    "concept_coverage": 0.58,
+    "key_concepts": ["subprime mortgages", "mortgage backed securities", "credit default swaps", "regulatory failure", "moral hazard", "too-big-to-fail"],
+    "evaluation_criteria": {
+      "content_accuracy": 0.4,
+      "concept_coverage": 0.3,
+      "critical_analysis": 0.3
+    },
+    "summary": "Student covers subprime lending and securitization but misses CDS regulatory failure and moral hazard"
   }
 ]
