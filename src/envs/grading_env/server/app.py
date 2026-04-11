@@ -7,7 +7,7 @@ from .environment import GradingEnvironment
 
 app = FastAPI(
     title="EduEval Grading Environment",
-    description="OpenEnv environment for automated answer sheet grading and evaluation",
+    description="OpenEnv environment for automated answer sheet grading",
     version="1.0.0"
 )
 
@@ -28,115 +28,131 @@ environments = {
 def root():
     return """
     <html>
-        <head>
-            <title>EduEval Grading Environment</title>
-            <script src="https://cdn.tailwindcss.com"></script>
-        </head>
-        <body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen flex items-center justify-center p-6">
-            <div class="max-w-4xl w-full">
-                <div class="text-center mb-10">
-                    <h1 class="text-6xl font-extrabold text-indigo-700 mb-3">📚 EduEval</h1>
-                    <p class="text-xl text-gray-600">Automated Answer Sheet Grading Environment</p>
-                    <p class="text-sm text-indigo-400 mt-2">OpenEnv · Reinforcement Learning · Education AI</p>
-                </div>
+    <head>
+        <title>EduEval</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+    <body class="bg-gradient-to-br from-indigo-50 to-blue-100 min-h-screen flex items-center justify-center p-6">
+        <div class="max-w-4xl w-full">
 
-                    <div class="bg-white rounded-2xl p-6 shadow-md border border-green-100">
-                        <div class="text-3xl mb-2">🟢</div>
-                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 1 — Factual Grading</h3>
-                        <p class="text-gray-500 text-sm">
-                            Grade objective questions with clear right or wrong answers.
-                            Strict binary-leaning reward function.
-                        </p>
-                        <div class="mt-3 text-green-600 font-semibold text-sm">Baseline Score: 0.97</div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl p-6 shadow-md border border-yellow-100">
-                        <div class="text-3xl mb-2">🟡</div>
-                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 2 — Conceptual Grading</h3>
-                        <p class="text-gray-500 text-sm">
-                            Grade concept-based answers with partial credit.
-                            Graduated rewards based on concept coverage.
-                        </p>
-                        <div class="mt-3 text-yellow-600 font-semibold text-sm">Baseline Score: 0.88</div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl p-6 shadow-md border border-red-100">
-                        <div class="text-3xl mb-2">🔴</div>
-                        <h3 class="font-bold text-lg text-gray-800 mb-1">Task 3 — Essay Grading</h3>
-                        <p class="text-gray-500 text-sm">
-                            Grade complex descriptive answers with structured feedback,
-                            coherence evaluation, and nuanced scoring.
-                        </p>
-                        <div class="mt-3 text-red-500 font-semibold text-sm">Baseline Score: 0.77</div>
-                    </div>
-
-                </div>
-
-                <div class="bg-white rounded-2xl p-6 shadow-md mb-6">
-                    <h2 class="text-xl font-bold text-gray-800 mb-4">🔗 API Endpoints</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono">
-                        <div class="bg-green-50 rounded-lg p-3"><span class="text-green-700 font-bold">POST</span> /reset?task_id=1</div>
-                        <div class="bg-blue-50 rounded-lg p-3"><span class="text-blue-700 font-bold">POST</span> /step?task_id=1</div>
-                        <div class="bg-purple-50 rounded-lg p-3"><span class="text-purple-700 font-bold">GET</span> /state?task_id=1</div>
-                        <div class="bg-gray-50 rounded-lg p-3"><span class="text-gray-700 font-bold">GET</span> /health</div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center gap-4">
-                    <a href="/docs"
-                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        📄 API Docs
-                    </a>
-                    <a href="https://github.com/natarajannetworks/edueval-grading-env"
-                       target="_blank"
-                       class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        🔗 GitHub
-                    </a>
-                    <a href="/health"
-                       class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        ✅ Health Check
-                    </a>
-                </div>
+            <!-- HEADER -->
+            <div class="text-center mb-10">
+                <h1 class="text-6xl font-extrabold text-indigo-700 mb-3">📚 EduEval</h1>
+                <p class="text-xl text-gray-600">AI Answer Sheet Grading System</p>
             </div>
-        </body>
+
+            <!-- TASK CARDS -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <h3 class="font-bold text-green-600">Task 1 — Factual</h3>
+                    <p class="text-sm text-gray-500">Binary grading</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <h3 class="font-bold text-yellow-600">Task 2 — Conceptual</h3>
+                    <p class="text-sm text-gray-500">Partial credit</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-xl shadow">
+                    <h3 class="font-bold text-red-600">Task 3 — Essay</h3>
+                    <p class="text-sm text-gray-500">Detailed evaluation</p>
+                </div>
+
+            </div>
+
+            <!-- BUTTONS -->
+            <div class="flex justify-center gap-4 mb-6">
+                <button onclick="startTask(1)" class="bg-green-600 text-white px-5 py-2 rounded-lg">Task 1</button>
+                <button onclick="startTask(2)" class="bg-yellow-600 text-white px-5 py-2 rounded-lg">Task 2</button>
+                <button onclick="startTask(3)" class="bg-red-600 text-white px-5 py-2 rounded-lg">Task 3</button>
+            </div>
+
+            <!-- ANSWER BOX -->
+            <div class="flex flex-col items-center gap-3">
+                <textarea id="answer" placeholder="Enter your answer..."
+                    class="w-full max-w-xl p-3 border rounded-lg"></textarea>
+
+                <button onclick="submitAnswer()"
+                    class="bg-indigo-600 text-white px-6 py-2 rounded-lg">
+                    Submit Answer
+                </button>
+
+                <p id="result" class="text-gray-700 text-sm"></p>
+            </div>
+
+        </div>
+
+        <!-- SCRIPT -->
+        <script>
+            let currentTask = 1;
+
+            async function startTask(taskId) {
+                currentTask = taskId;
+
+                const res = await fetch(`/reset?task_id=${taskId}`, {
+                    method: "POST"
+                });
+                const data = await res.json();
+
+                document.getElementById("result").innerText =
+                    "Question: " + data.question;
+            }
+
+            async function submitAnswer() {
+                const answer = document.getElementById("answer").value;
+
+                const res = await fetch(`/step?task_id=${currentTask}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        answer: answer
+                    })
+                });
+
+                const data = await res.json();
+
+                document.getElementById("result").innerText =
+                    "Score: " + data.reward + " | Completed: " + data.done;
+            }
+        </script>
+
+    </body>
     </html>
     """
 
 @app.post("/reset", response_model=GradingObservation)
 def reset(task_id: int = 1):
     if task_id not in environments:
-        raise HTTPException(400, "task_id must be 1, 2, or 3")
+        raise HTTPException(400, "Invalid task_id")
     environments[task_id] = GradingEnvironment(task_id=task_id)
     return environments[task_id].reset()
 
 @app.post("/step")
 def step(action: GradingAction, task_id: int = 1):
     if task_id not in environments:
-        raise HTTPException(400, "task_id must be 1, 2, or 3")
+        raise HTTPException(400, "Invalid task_id")
 
     env = environments[task_id]
 
     if env.state().is_complete:
-        raise HTTPException(400, "Episode complete. Call /reset first.")
+        raise HTTPException(400, "Episode complete")
 
     obs, reward, done = env.step(action)
 
     return {
         "observation": obs.dict(),
         "reward": reward,
-        "done": done,
-        "info": {
-            "episode_id": env.episode_id,
-            "step": env.current_index
-        }
+        "done": done
     }
 
 @app.get("/state", response_model=GradingState)
 def state(task_id: int = 1):
     if task_id not in environments:
-        raise HTTPException(400, "task_id must be 1, 2, or 3")
+        raise HTTPException(400, "Invalid task_id")
     return environments[task_id].state()
 
 @app.get("/health")
@@ -144,9 +160,7 @@ def health():
     return {
         "status": "ok",
         "env": "EduEval",
-        "version": "1.0.0",
-        "tasks": 3,
-        "message": "Environment is running successfully"
+        "tasks": 3
     }
 
 def main():
