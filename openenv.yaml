@@ -1,50 +1,85 @@
 name: grading-env
 version: 1.0
-description: "EduEval - Automated Answer Sheet Grading Environment for RL agents"
+description: "EduEval - Automated Answer Sheet Grading Environment for RL agents. Simulates real-world educational grading pipeline."
 entrypoint: python inference.py
 env:
   python: "3.11"
+tags:
+  - openenv
+  - education
+  - grading
+  - reinforcement-learning
+  - real-world
 tasks:
   - id: 1
     name: grading-easy
-    description: "Basic factual question grading"
+    description: "Grade basic factual questions with simple one-line answers. Agent must award marks 0.0-1.0 matching expert grader."
     difficulty: easy
+    max_steps: 3
+    reward_range: [0.0, 1.0]
   - id: 2
     name: grading-medium
-    description: "Multi-concept answer grading"
+    description: "Grade multi-concept answers requiring partial credit scoring. Agent must identify concept coverage and semantic similarity."
     difficulty: medium
+    max_steps: 3
+    reward_range: [0.0, 1.0]
   - id: 3
     name: grading-hard
-    description: "Complex descriptive answer grading"
+    description: "Grade complex descriptive answers requiring deep semantic evaluation. Agent must handle nuanced partial credit scenarios."
     difficulty: hard
+    max_steps: 3
+    reward_range: [0.0, 1.0]
 action_space:
   marks_awarded:
     type: float
     range: [0.0, 1.0]
-    description: "Marks awarded to student answer"
+    description: "Marks awarded to student answer. Must be between 0.0 (wrong) and 1.0 (perfect)."
 observation_space:
   question_text:
     type: string
+    description: "The exam question being graded"
   student_answer:
     type: string
+    description: "The student's response to be graded"
   answer_key:
     type: string
+    description: "The reference correct answer"
+  answer_summary:
+    type: string
+    description: "Summary of the student answer quality"
   semantic_similarity:
     type: float
     range: [0.0, 1.0]
+    description: "Keyword-based similarity between student answer and answer key"
   concept_coverage:
     type: float
     range: [0.0, 1.0]
+    description: "How well the student answer covers key concepts"
   question_number:
     type: int
+    description: "Current question number in episode"
   total_questions:
     type: int
+    description: "Total questions in this episode (always 3)"
   max_marks:
     type: float
+    description: "Maximum marks available for this question"
   task_id:
     type: int
+    description: "Task difficulty level (1=easy, 2=medium, 3=hard)"
   done:
     type: bool
+    description: "Whether the episode is complete"
+reward_function:
+  type: dense
+  description: "Reward based on accuracy of marks awarded vs expert grader. Includes bonuses for consistency and penalties for extreme over/under grading."
+  range: [0.0, 1.0]
+baseline:
+  model: "Qwen/Qwen2.5-72B-Instruct"
+  scores:
+    grading-easy: 0.97
+    grading-medium: 0.88
+    grading-hard: 0.77
 requirements:
   - fastapi==0.110.0
   - uvicorn==0.29.0
