@@ -4,20 +4,26 @@
     "student_answer": "Force equals mass times acceleration",
     "answer_key": "Force equals mass multiplied by acceleration. F = ma",
     "manual_mark": 1.0,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.9,
+    "summary": "Student correctly states F=ma relationship"
   },
   {
     "question": "What is the chemical formula for water?",
     "student_answer": "H2O",
-    "answer_key": "H2O — two hydrogen atoms and one oxygen atom",
+    "answer_key": "H2O - two hydrogen atoms and one oxygen atom",
     "manual_mark": 1.0,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.7,
+    "summary": "Student gives correct formula but no explanation"
   },
   {
     "question": "What is photosynthesis?",
     "student_answer": "Plants make food using sunlight",
     "answer_key": "Photosynthesis converts sunlight water and CO2 into glucose and oxygen",
     "manual_mark": 0.5,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.4,
+    "summary": "Student gives partial answer missing key components"
   }
 ]

@@ -1,19 +1,56 @@
 name: grading-env
 version: 1.0
-
-entrypoint: python client.py   # or inference.py if that's your main script
-
+description: "EduEval - Automated Answer Sheet Grading Environment for RL agents"
+entrypoint: python inference.py
 env:
-  python: 3.11
-
+  python: "3.11"
+tasks:
+  - id: 1
+    name: grading-easy
+    description: "Basic factual question grading"
+    difficulty: easy
+  - id: 2
+    name: grading-medium
+    description: "Multi-concept answer grading"
+    difficulty: medium
+  - id: 3
+    name: grading-hard
+    description: "Complex descriptive answer grading"
+    difficulty: hard
+action_space:
+  marks_awarded:
+    type: float
+    range: [0.0, 1.0]
+    description: "Marks awarded to student answer"
+observation_space:
+  question_text:
+    type: string
+  student_answer:
+    type: string
+  answer_key:
+    type: string
+  semantic_similarity:
+    type: float
+    range: [0.0, 1.0]
+  concept_coverage:
+    type: float
+    range: [0.0, 1.0]
+  question_number:
+    type: int
+  total_questions:
+    type: int
+  max_marks:
+    type: float
+  task_id:
+    type: int
+  done:
+    type: bool
 requirements:
   - fastapi==0.110.0
   - uvicorn==0.29.0
-  - pydantic==2.6.4
+  - pydantic==2.7.4
+  - pydantic-settings>=2.5.2
   - requests==2.31.0
-  - openai==1.23.0
-  - transformers==4.40.0
-  - torch==2.2.2
-  - Pillow==10.3.0
-  - sentence-transformers==2.7.0
+  - openai>=1.23.0
   - numpy<2
+  - openenv==0.1.13

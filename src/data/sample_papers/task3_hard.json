@@ -4,20 +4,26 @@
     "student_answer": "The Industrial Revolution changed how people worked. Factories replaced home-based work. Cities grew bigger as people moved for jobs. There were bad working conditions especially for children. But it also made goods cheaper and more available for everyone.",
     "answer_key": "The Industrial Revolution transformed society through urbanization, shift from agrarian to industrial economy, emergence of working class, child labor issues, technological innovation, improved living standards over time, and laid groundwork for modern capitalism.",
     "manual_mark": 0.65,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.6,
+    "summary": "Student covers urbanization and child labor but misses capitalism, agrarian shift and technological innovation aspects"
   },
   {
     "question": "Discuss the ethical implications of artificial intelligence",
     "student_answer": "AI raises many ethical questions. It could take away jobs from people. There are also privacy concerns since AI can track people. AI systems can be biased if trained on biased data. We need regulations to make sure AI is used responsibly.",
     "answer_key": "AI ethics encompasses job displacement and economic inequality, privacy and surveillance, algorithmic bias and fairness, accountability and transparency, autonomous weapons, data ownership, and the need for regulatory frameworks.",
     "manual_mark": 0.7,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student covers job displacement, privacy and bias but misses accountability, autonomous weapons and data ownership"
   },
   {
     "question": "Explain the significance of DNA in modern medicine",
     "student_answer": "DNA contains genetic information. Doctors can now read DNA to find diseases. Gene therapy can fix genetic disorders. DNA testing is used in cancer treatment to find the right medicine.",
     "answer_key": "DNA medical significance includes genetic disease diagnosis, pharmacogenomics for personalized medicine, gene therapy, CRISPR gene editing, cancer genomics, forensic medicine, and understanding hereditary conditions.",
     "manual_mark": 0.55,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.5,
+    "summary": "Student covers gene therapy and cancer but misses CRISPR, pharmacogenomics and forensic medicine"
   }
 ]

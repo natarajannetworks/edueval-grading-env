@@ -4,20 +4,26 @@
     "student_answer": "Water evaporates from oceans, forms clouds, and falls as rain. The rain flows into rivers and back to the ocean.",
     "answer_key": "The water cycle involves evaporation, condensation, precipitation, and collection. Water evaporates due to solar energy, condenses to form clouds, precipitates as rain or snow, and collects in water bodies.",
     "manual_mark": 0.7,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.65,
+    "summary": "Student covers main stages but misses technical terms like condensation and precipitation"
   },
   {
     "question": "Describe the causes of World War 1",
     "student_answer": "The assassination of Archduke Franz Ferdinand triggered the war. There were also alliances between countries that pulled everyone in.",
     "answer_key": "WWI was caused by MAIN factors: Militarism, Alliances, Imperialism, Nationalism. The assassination of Franz Ferdinand was the immediate trigger.",
     "manual_mark": 0.6,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.55,
+    "summary": "Student identifies trigger and alliances but misses militarism, imperialism and nationalism"
   },
   {
     "question": "What is machine learning?",
     "student_answer": "Machine learning is when computers learn from data without being explicitly programmed for every task.",
     "answer_key": "Machine learning is a subset of AI where systems learn and improve from experience without being explicitly programmed using algorithms to parse data and make decisions.",
     "manual_mark": 0.8,
-    "max_marks": 1.0
+    "max_marks": 1.0,
+    "concept_coverage": 0.75,
+    "summary": "Student gives good definition but misses algorithmic detail and decision making aspect"
   }
 ]
