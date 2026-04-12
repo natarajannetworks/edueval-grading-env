@@ -16,8 +16,8 @@ client = OpenAI(
     api_key=HF_TOKEN
 )
 
-# Your HF Space URL
-ENV_BASE_URL = os.getenv("ENV_BASE_URL", "https://natarajan-networks-grading-env.hf.space")
+# Environment URL - configurable for evaluator
+ENV_BASE_URL = os.getenv("ENV_BASE_URL", os.getenv("SPACE_URL", "https://natarajan-networks-grading-env.hf.space"))
 
 def llm_grade(question, student_answer, answer_key, semantic_similarity, concept_coverage):
     """Use LLM to grade student answer and return marks between 0.0 and 1.0"""
@@ -50,7 +50,6 @@ Respond with ONLY a single decimal number between 0.0 and 1.0. Nothing else."""
         mark = float(text)
         return round(max(0.0, min(1.0, mark)), 2)
     except Exception:
-        # Fallback to heuristic
         return round(max(0.0, min(1.0, (semantic_similarity + concept_coverage) / 2)), 2)
 
 def run_task(task_id):
@@ -66,7 +65,6 @@ def run_task(task_id):
     print(f"[START] task={task_name} env=edueval model={MODEL_NAME}", flush=True)
 
     try:
-        # Reset environment
         reset_resp = requests.post(
             f"{base}/reset",
             params={"task_id": task_id},
@@ -84,7 +82,6 @@ def run_task(task_id):
             semantic_similarity = obs.get("semantic_similarity", 0.0)
             concept_coverage = obs.get("concept_coverage", 0.0)
 
-            # Use LLM to grade
             marks = llm_grade(
                 question,
                 student_answer,
@@ -93,7 +90,6 @@ def run_task(task_id):
                 concept_coverage
             )
 
-            # Submit grade to environment
             step_resp = requests.post(
                 f"{base}/step",
                 params={"task_id": task_id},
