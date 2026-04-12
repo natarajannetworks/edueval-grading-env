@@ -135,7 +135,10 @@ class GradingEnvironment:
         else:
             self.consecutive_accurate = 0
 
-        return round(min(1.0, base_reward + bonus), 4)
+        final = round(min(1.0, base_reward + bonus), 4)
+	# Score must be strictly between 0 and 1
+	final = max(0.01, min(0.99, final))
+	return final
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
         idx = min(self.current_index, len(self.questions) - 1)
