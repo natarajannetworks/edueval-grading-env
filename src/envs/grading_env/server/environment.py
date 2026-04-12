@@ -59,11 +59,9 @@ class GradingEnvironment:
     def _compute_reward(self, agent_mark: float, manual_mark: float, question: dict, question_type: str) -> float:
         diff = abs(agent_mark - manual_mark)
 
-        # Different reward logic per question type
         if question_type == "factual":
-            # Strict grading for factual questions
             if diff == 0.0:
-                base_reward = 1.0
+                base_reward = 0.98
             elif diff <= 0.1:
                 base_reward = 0.7
             elif diff <= 0.2:
@@ -71,12 +69,11 @@ class GradingEnvironment:
             elif diff <= 0.3:
                 base_reward = 0.2
             else:
-                base_reward = 0.0
+                base_reward = 0.02
 
         elif question_type == "conceptual":
-            # More lenient for conceptual questions
             if diff == 0.0:
-                base_reward = 1.0
+                base_reward = 0.98
             elif diff <= 0.05:
                 base_reward = 0.95
             elif diff <= 0.1:
@@ -90,12 +87,11 @@ class GradingEnvironment:
             elif diff <= 0.4:
                 base_reward = 0.2
             else:
-                base_reward = 0.0
+                base_reward = 0.02
 
-        else:  # essay
-            # Holistic grading for essays
+        else:
             if diff == 0.0:
-                base_reward = 1.0
+                base_reward = 0.98
             elif diff <= 0.05:
                 base_reward = 0.9
             elif diff <= 0.1:
@@ -111,15 +107,13 @@ class GradingEnvironment:
             elif diff <= 0.4:
                 base_reward = 0.2
             else:
-                base_reward = 0.0
+                base_reward = 0.02
 
-        # Universal penalties
         if agent_mark >= 0.9 and manual_mark < 0.5:
-            base_reward = max(0.0, base_reward - 0.4)
+            base_reward = max(0.02, base_reward - 0.4)
         if agent_mark <= 0.1 and manual_mark > 0.5:
-            base_reward = max(0.0, base_reward - 0.4)
+            base_reward = max(0.02, base_reward - 0.4)
 
-        # Semantic and concept alignment bonus
         semantic = self._check_keyword_match(
             question["student_answer"], question["answer_key"]
         )
@@ -127,7 +121,6 @@ class GradingEnvironment:
         signal_alignment = 1.0 - abs(agent_mark - (semantic + concept) / 2)
         bonus = round(signal_alignment * 0.1, 4)
 
-        # Consecutive accuracy bonus
         if diff <= 0.1:
             self.consecutive_accurate += 1
             if self.consecutive_accurate >= 2:
@@ -135,10 +128,9 @@ class GradingEnvironment:
         else:
             self.consecutive_accurate = 0
 
-        final = round(min(1.0, base_reward + bonus), 4)
-	# Score must be strictly between 0 and 1
-	final = max(0.01, min(0.99, final))
-	return final
+        final = round(base_reward + bonus, 4)
+        final = max(0.01, min(0.99, final))
+        return final
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
         idx = min(self.current_index, len(self.questions) - 1)
