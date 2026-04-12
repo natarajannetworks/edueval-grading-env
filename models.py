@@ -6,9 +6,9 @@ class GradingAction(BaseModel):
     """Action taken by the grading agent - awarding marks to a student answer."""
     marks_awarded: float = Field(
         ...,
-        ge=0.0,
-        le=1.0,
-        description="Fraction of marks to award (0.0 = wrong, 1.0 = perfect)"
+        gt=0.0,
+        lt=1.0,
+        description="Fraction of marks to award (strictly between 0.0 and 1.0)"
     )
 
 
@@ -19,11 +19,11 @@ class GradingObservation(BaseModel):
     answer_summary: str = Field(..., description="Summary of student answer quality")
     answer_key: str = Field(..., description="The reference correct answer")
     semantic_similarity: float = Field(
-        0.0, ge=0.0, le=1.0,
+        0.5, ge=0.0, le=1.0,
         description="Keyword-based similarity between student and reference answer"
     )
     concept_coverage: float = Field(
-        0.0, ge=0.0, le=1.0,
+        0.5, ge=0.0, le=1.0,
         description="How well key concepts are covered in student answer"
     )
     question_number: int = Field(..., description="Current question number in episode")
