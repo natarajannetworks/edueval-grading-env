@@ -158,7 +158,7 @@ class GradingEnvironment:
             concept_coverage=concept,
             question_number=self.current_index + 1,
             total_questions=len(self.questions),
-            max_marks=q["max_marks"],
+            max_marks=0.99,
             task_id=self.task_id,
             done=done
         )
