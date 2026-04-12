@@ -60,76 +60,69 @@ class GradingEnvironment:
         diff = abs(agent_mark - manual_mark)
 
         if question_type == "factual":
-            if diff == 0.0:
-                base_reward = 0.98
-            elif diff <= 0.1:
-                base_reward = 0.7
-            elif diff <= 0.2:
-                base_reward = 0.4
-            elif diff <= 0.3:
-                base_reward = 0.2
-            else:
-                base_reward = 0.02
-
-        elif question_type == "conceptual":
-            if diff == 0.0:
-                base_reward = 0.98
-            elif diff <= 0.05:
+            if diff <= 0.05:
                 base_reward = 0.95
             elif diff <= 0.1:
-                base_reward = 0.85
-            elif diff <= 0.15:
                 base_reward = 0.75
             elif diff <= 0.2:
-                base_reward = 0.6
+                base_reward = 0.45
             elif diff <= 0.3:
-                base_reward = 0.4
-            elif diff <= 0.4:
-                base_reward = 0.2
+                base_reward = 0.25
+            elif diff <= 0.5:
+                base_reward = 0.15
             else:
-                base_reward = 0.02
+                base_reward = 0.05
+
+        elif question_type == "conceptual":
+            if diff <= 0.05:
+                base_reward = 0.92
+            elif diff <= 0.1:
+                base_reward = 0.82
+            elif diff <= 0.15:
+                base_reward = 0.72
+            elif diff <= 0.2:
+                base_reward = 0.58
+            elif diff <= 0.3:
+                base_reward = 0.38
+            elif diff <= 0.4:
+                base_reward = 0.22
+            elif diff <= 0.5:
+                base_reward = 0.12
+            else:
+                base_reward = 0.05
 
         else:
-            if diff == 0.0:
-                base_reward = 0.98
-            elif diff <= 0.05:
-                base_reward = 0.9
+            if diff <= 0.05:
+                base_reward = 0.88
             elif diff <= 0.1:
-                base_reward = 0.8
+                base_reward = 0.78
             elif diff <= 0.15:
-                base_reward = 0.7
+                base_reward = 0.68
             elif diff <= 0.2:
-                base_reward = 0.6
+                base_reward = 0.58
             elif diff <= 0.25:
-                base_reward = 0.5
+                base_reward = 0.48
             elif diff <= 0.3:
-                base_reward = 0.4
+                base_reward = 0.38
             elif diff <= 0.4:
-                base_reward = 0.2
+                base_reward = 0.22
+            elif diff <= 0.5:
+                base_reward = 0.12
             else:
-                base_reward = 0.02
+                base_reward = 0.05
 
         if agent_mark >= 0.9 and manual_mark < 0.5:
-            base_reward = max(0.02, base_reward - 0.4)
+            base_reward = max(0.05, base_reward - 0.3)
         if agent_mark <= 0.1 and manual_mark > 0.5:
-            base_reward = max(0.02, base_reward - 0.4)
-
-        semantic = self._check_keyword_match(
-            question["student_answer"], question["answer_key"]
-        )
-        concept = question.get("concept_coverage", 0.0)
-        signal_alignment = 1.0 - abs(agent_mark - (semantic + concept) / 2)
-        bonus = round(signal_alignment * 0.1, 4)
+            base_reward = max(0.05, base_reward - 0.3)
 
         if diff <= 0.1:
             self.consecutive_accurate += 1
-            if self.consecutive_accurate >= 2:
-                bonus += 0.05
         else:
             self.consecutive_accurate = 0
 
-        final = round(base_reward + bonus, 4)
-        final = max(0.01, min(0.99, final))
+        final = round(base_reward, 4)
+        final = max(0.05, min(0.95, final))
         return final
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
