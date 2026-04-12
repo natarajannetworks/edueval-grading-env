@@ -140,9 +140,19 @@ def reset(task_id: int = 1):
     environments[task_id] = GradingEnvironment(task_id=task_id)
     obs = environments[task_id].reset()
 
+    # 🔍 Try all possible fields
+    question = None
+
+    if hasattr(obs, "question"):
+        question = obs.question
+    elif hasattr(obs, "current_question"):
+        question = obs.current_question
+    elif isinstance(obs, dict):
+        question = obs.get("question")
+
     return {
-        "question": obs.question,   # ✅ explicitly send question
-        "observation": obs.dict()
+        "question": question if question else "⚠️ Question not found",
+        "observation": obs.dict() if hasattr(obs, "dict") else obs
     }
 
 @app.post("/step")
