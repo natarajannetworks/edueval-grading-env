@@ -132,12 +132,18 @@ def root():
     </html>
     """
 
-@app.post("/reset", response_model=GradingObservation)
+@app.post("/reset")
 def reset(task_id: int = 1):
     if task_id not in environments:
         raise HTTPException(400, "Invalid task_id")
+
     environments[task_id] = GradingEnvironment(task_id=task_id)
-    return environments[task_id].reset()
+    obs = environments[task_id].reset()
+
+    return {
+        "question": obs.question,   # ✅ explicitly send question
+        "observation": obs.dict()
+    }
 
 @app.post("/step")
 def step(request: dict, task_id: int = 1):
