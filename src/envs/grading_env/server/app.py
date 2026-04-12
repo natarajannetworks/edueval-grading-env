@@ -39,28 +39,26 @@ def root():
                     <p class="text-xl text-gray-600">Automated Answer Sheet Grading Environment</p>
                     <p class="text-sm text-indigo-400 mt-2">OpenEnv · Reinforcement Learning · Education AI</p>
                 </div>
-
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div class="bg-white rounded-2xl p-6 shadow-md border border-green-100">
                         <div class="text-3xl mb-2">🟢</div>
                         <h3 class="font-bold text-lg text-gray-800 mb-1">Task 1 — Factual Grading</h3>
-                        <p class="text-gray-500 text-sm">Grade objective questions with clear right or wrong answers. Strict binary-leaning reward function.</p>
+                        <p class="text-gray-500 text-sm">Grade objective questions with clear right or wrong answers.</p>
                         <div class="mt-3 text-green-600 font-semibold text-sm">Baseline Score: 0.97</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-md border border-yellow-100">
                         <div class="text-3xl mb-2">🟡</div>
                         <h3 class="font-bold text-lg text-gray-800 mb-1">Task 2 — Conceptual Grading</h3>
-                        <p class="text-gray-500 text-sm">Grade concept-based answers with partial credit. Graduated rewards based on concept coverage.</p>
+                        <p class="text-gray-500 text-sm">Grade concept-based answers with partial credit.</p>
                         <div class="mt-3 text-yellow-600 font-semibold text-sm">Baseline Score: 0.88</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-md border border-red-100">
                         <div class="text-3xl mb-2">🔴</div>
                         <h3 class="font-bold text-lg text-gray-800 mb-1">Task 3 — Essay Grading</h3>
-                        <p class="text-gray-500 text-sm">Grade complex essays with holistic evaluation of content accuracy and critical analysis depth.</p>
+                        <p class="text-gray-500 text-sm">Grade complex essays with holistic evaluation.</p>
                         <div class="mt-3 text-red-500 font-semibold text-sm">Baseline Score: 0.77</div>
                     </div>
                 </div>
-
                 <div class="bg-white rounded-2xl p-6 shadow-md mb-6">
                     <h2 class="text-xl font-bold text-gray-800 mb-4">🔗 API Endpoints</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-mono">
@@ -70,21 +68,10 @@ def root():
                         <div class="bg-gray-50 rounded-lg p-3"><span class="text-gray-700 font-bold">GET</span> /health</div>
                     </div>
                 </div>
-
                 <div class="flex justify-center gap-4">
-                    <a href="/docs"
-                       class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        📄 API Docs
-                    </a>
-                    <a href="https://github.com/natarajannetworks/edueval-grading-env"
-                       target="_blank"
-                       class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        🔗 GitHub
-                    </a>
-                    <a href="/health"
-                       class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">
-                        ✅ Health Check
-                    </a>
+                    <a href="/docs" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">📄 API Docs</a>
+                    <a href="https://github.com/natarajannetworks/edueval-grading-env" target="_blank" class="bg-gray-800 hover:bg-black text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">🔗 GitHub</a>
+                    <a href="/health" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition shadow-lg">✅ Health Check</a>
                 </div>
             </div>
         </body>
@@ -108,16 +95,13 @@ def step(action: GradingAction, task_id: int = 1):
     if env.state().is_complete:
         raise HTTPException(400, "Episode complete. Call /reset first.")
 
-    obs, reward, done = env.step(action)
+    obs, reward, done, info = env.step(action)
 
     return {
         "observation": obs.dict(),
         "reward": reward,
         "done": done,
-        "info": {
-            "episode_id": env.episode_id,
-            "step": env.current_index
-        }
+        "info": info
     }
 
 @app.get("/state", response_model=GradingState)

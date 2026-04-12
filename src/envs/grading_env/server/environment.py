@@ -2,7 +2,7 @@ import json
 import uuid
 import random
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, Dict, Any
 
 from ..models import GradingAction, GradingObservation, GradingState
 
@@ -29,7 +29,7 @@ class GradingEnvironment:
         self.questions = random.sample(self.all_questions, min(3, len(self.all_questions)))
         return self._make_observation()
 
-    def step(self, action: GradingAction) -> Tuple[GradingObservation, float, bool]:
+    def step(self, action: GradingAction) -> Tuple[GradingObservation, float, bool, Dict[str, Any]]:
         current_q = self.questions[self.current_index]
         manual_mark = current_q["manual_mark"]
         agent_mark = action.marks_awarded
@@ -42,18 +42,30 @@ class GradingEnvironment:
         done = self.current_index >= len(self.questions)
         obs = self._make_observation(done=done)
 
-        return obs, reward, done
+        total = len(self.questions)
+        episode_score = self.cumulative_marks / total if total > 0 else 0.5
+        episode_score = max(0.01, min(0.99, episode_score))
+
+        info = {
+            "episode_id": self.episode_id,
+            "step": self.current_index,
+            "episode_score": episode_score
+        }
+
+        return obs, reward, done, info
 
     def state(self) -> GradingState:
+        total = len(self.questions) if self.questions else 3
+        safe_cumulative = max(0.01, min(total - 0.01, self.cumulative_marks))
         return GradingState(
             episode_id=self.episode_id,
             step_count=self.current_index,
             task_id=self.task_id,
-            total_questions=len(self.questions),
+            total_questions=total,
             current_question=self.current_index,
-            cumulative_marks=self.cumulative_marks,
-            max_possible_marks=float(len(self.questions)),
-            is_complete=self.current_index >= len(self.questions)
+            cumulative_marks=safe_cumulative,
+            max_possible_marks=float(total),
+            is_complete=self.current_index >= total
         )
 
     def _compute_reward(self, agent_mark: float, manual_mark: float, question: dict, question_type: str) -> float:
@@ -122,7 +134,7 @@ class GradingEnvironment:
             self.consecutive_accurate = 0
 
         final = round(base_reward, 4)
-        final = max(0.07, min(0.93, final))
+        final = max(0.01, min(0.99, final))
         return final
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
