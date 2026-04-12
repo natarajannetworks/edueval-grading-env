@@ -61,60 +61,60 @@ class GradingEnvironment:
 
         if question_type == "factual":
             if diff <= 0.05:
-                base_reward = 0.95
+                base_reward = 0.93
             elif diff <= 0.1:
-                base_reward = 0.75
+                base_reward = 0.73
             elif diff <= 0.2:
-                base_reward = 0.45
+                base_reward = 0.43
             elif diff <= 0.3:
-                base_reward = 0.25
+                base_reward = 0.23
             elif diff <= 0.5:
-                base_reward = 0.15
+                base_reward = 0.13
             else:
-                base_reward = 0.05
+                base_reward = 0.07
 
         elif question_type == "conceptual":
             if diff <= 0.05:
-                base_reward = 0.92
+                base_reward = 0.91
             elif diff <= 0.1:
-                base_reward = 0.82
+                base_reward = 0.81
             elif diff <= 0.15:
-                base_reward = 0.72
+                base_reward = 0.71
             elif diff <= 0.2:
-                base_reward = 0.58
+                base_reward = 0.57
             elif diff <= 0.3:
-                base_reward = 0.38
+                base_reward = 0.37
             elif diff <= 0.4:
-                base_reward = 0.22
+                base_reward = 0.21
             elif diff <= 0.5:
-                base_reward = 0.12
+                base_reward = 0.11
             else:
-                base_reward = 0.05
+                base_reward = 0.07
 
         else:
             if diff <= 0.05:
-                base_reward = 0.88
+                base_reward = 0.87
             elif diff <= 0.1:
-                base_reward = 0.78
+                base_reward = 0.77
             elif diff <= 0.15:
-                base_reward = 0.68
+                base_reward = 0.67
             elif diff <= 0.2:
-                base_reward = 0.58
+                base_reward = 0.57
             elif diff <= 0.25:
-                base_reward = 0.48
+                base_reward = 0.47
             elif diff <= 0.3:
-                base_reward = 0.38
+                base_reward = 0.37
             elif diff <= 0.4:
-                base_reward = 0.22
+                base_reward = 0.21
             elif diff <= 0.5:
-                base_reward = 0.12
+                base_reward = 0.11
             else:
-                base_reward = 0.05
+                base_reward = 0.07
 
         if agent_mark >= 0.9 and manual_mark < 0.5:
-            base_reward = max(0.05, base_reward - 0.3)
+            base_reward = max(0.07, base_reward - 0.3)
         if agent_mark <= 0.1 and manual_mark > 0.5:
-            base_reward = max(0.05, base_reward - 0.3)
+            base_reward = max(0.07, base_reward - 0.3)
 
         if diff <= 0.1:
             self.consecutive_accurate += 1
@@ -122,7 +122,7 @@ class GradingEnvironment:
             self.consecutive_accurate = 0
 
         final = round(base_reward, 4)
-        final = max(0.05, min(0.95, final))
+        final = max(0.07, min(0.93, final))
         return final
 
     def _make_observation(self, done: bool = False) -> GradingObservation:
@@ -134,13 +134,16 @@ class GradingEnvironment:
             q["answer_key"]
         )
 
+        concept = q.get("concept_coverage", 0.5)
+        concept = max(0.05, min(0.95, concept))
+
         return GradingObservation(
             question_text=q["question"],
             student_answer=q["student_answer"],
             answer_summary=q.get("summary", q["student_answer"]),
             answer_key=q["answer_key"],
             semantic_similarity=keyword_match,
-            concept_coverage=q.get("concept_coverage", 0.0),
+            concept_coverage=concept,
             question_number=self.current_index + 1,
             total_questions=len(self.questions),
             max_marks=q["max_marks"],
@@ -152,7 +155,7 @@ class GradingEnvironment:
         student_lower = student_answer.lower()
         key_phrases = [p.strip() for p in answer_key.split('.') if p.strip()]
         if not key_phrases:
-            return 0.0
+            return 0.5
 
         matches = 0
         for phrase in key_phrases:
@@ -161,7 +164,9 @@ class GradingEnvironment:
                 if term.lower() in student_lower:
                     matches += 1
                     break
-        return min(1.0, matches / len(key_phrases)) if key_phrases else 0.0
+
+        raw = matches / len(key_phrases)
+        return round(max(0.05, min(0.95, raw)), 4)
 
     def _load_task(self, task_id: int):
         file_map = {
