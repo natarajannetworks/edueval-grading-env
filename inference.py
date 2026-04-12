@@ -111,7 +111,8 @@ def run_task(task_id):
 
     finally:
         rewards_str = ",".join(f"{r:.2f}" for r in rewards) if rewards else "0.05"
-        print(f"[END] success={str(success).lower()} steps={step_num} rewards={rewards_str}", flush=True)
+        score_clamped = round(max(0.01, min(0.99, score)), 2)
+        print(f"[END] success={str(success).lower()} steps={step_num} score={score_clamped} rewards={rewards_str}", flush=True)
 
     return score
 
